@@ -1,9 +1,273 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://coastalparadiseevents.com/</loc>
-    <lastmod>2026-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-</urlset>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coastal Paradise Events | Event Planning & Design</title>
+  <meta name="description" content="Premier coastal event planning, weddings, corporate retreats, and private celebrations.">
+  <link rel="canonical" href="https://coastalparadiseevents.com/">
+
+  <style>
+    :root {
+      --primary: #1A3644;
+      --accent: #007791;
+      --sand: #F7F5F0;
+      --text: #2D3748;
+      --muted: #718096;
+      --white: #FFFFFF;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background-color: var(--white);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid #E2E8F0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      margin-left: 1.5rem;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      background-color: var(--sand);
+      padding: 5rem 1.5rem 6rem;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.75rem;
+      color: var(--primary);
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--accent);
+      color: var(--white);
+      padding: 0.85rem 1.75rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.2s;
+    }
+
+    .btn:hover {
+      background-color: var(--primary);
+    }
+
+    /* Services */
+    .services {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title p {
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 2rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* CTA Section */
+    .cta-banner {
+      background-color: var(--primary);
+      color: var(--white);
+      text-align: center;
+      padding: 4rem 1.5rem;
+    }
+
+    .cta-banner h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta-banner p {
+      color: #CBD5E0;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .btn-light {
+      background-color: var(--white);
+      color: var(--primary);
+    }
+
+    .btn-light:hover {
+      background-color: var(--sand);
+      color: var(--primary);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid #E2E8F0;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .nav-links {
+        display: none; /* simple fallback for initial mobile view */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="/" class="brand">Coastal Paradise Events</a>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Unforgettable Gatherings by the Coast</h1>
+      <p>Bespoke event planning, coastal weddings, corporate retreats, and private celebrations tailored to your exact vision.</p>
+      <a href="#contact" class="btn">Inquire About Your Date</a>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <div class="section-title">
+      <h2>Curated Event Services</h2>
+      <p>From concept to execution, we take care of every detail.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Coastal Weddings</h3>
+        <p>Full-service wedding planning, rehearsal dinners, and oceanfront ceremonies designed for timeless memories.</p>
+      </div>
+      <div class="card">
+        <h3>Corporate Retreats</h3>
+        <p>Productive, memorable company events and executive getaways with seamless logistics and local excursions.</p>
+      </div>
+      <div class="card">
+        <h3>Private Celebrations</h3>
+        <p>Milestone birthdays, anniversaries, and luxury beach gatherings crafted with intimate styling and culinary excellence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section id="contact" class="cta-banner">
+    <h2>Let’s Plan Your Event</h2>
+    <p>Reach out to discuss dates, venue recommendations, or custom planning packages.</p>
+    <a href="mailto:info@coastalparadiseevents.com" class="btn btn-light">Email Us Directly</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Coastal Paradise Events. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

@@ -15,43 +15,29 @@
 </head>
 <body>
 
-  <header>
-    <a href="index.html" class="brand-container">
-      <svg width="46" height="46" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="48" stroke="url(#goldGradient)" stroke-width="2"/>
-        <path d="M22 65C34 50 48 72 62 56C72 44 85 58 85 58" stroke="url(#aquaGradient)" stroke-width="4" stroke-linecap="round"/>
-        <circle cx="50" cy="38" r="14" fill="url(#goldGradient)"/>
-        <path d="M50 48V78" stroke="#d4af37" stroke-width="3" stroke-linecap="round"/>
-        <path d="M50 56C42 50 36 54 34 60" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round"/>
-        <path d="M50 62C58 56 64 60 66 66" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round"/>
-        <defs>
-          <linearGradient id="goldGradient" x1="0" y1="0" x2="100" y2="100">
-            <stop offset="0%" stop-color="#f3e5ab"/>
-            <stop offset="50%" stop-color="#d4af37"/>
-            <stop offset="100%" stop-color="#aa820a"/>
-          </linearGradient>
-          <linearGradient id="aquaGradient" x1="0" y1="0" x2="100" y2="100">
-            <stop offset="0%" stop-color="#02c39a"/>
-            <stop offset="100%" stop-color="#00a896"/>
-          </linearGradient>
-        </defs>
-      </svg>
-      <div class="brand-text">
-        <h1>COASTAL PARADISE <span>EVENTS</span></h1>
-        <p>Southwest Florida</p>
-      </div>
-    </a>
-    <nav>
-      <a href="index.html" class="nav-link active">Home</a>
-      <a href="weddings.html" class="nav-link">Weddings</a>
-      <a href="corporate.html" class="nav-link">Corporate</a>
-      <a href="resorts.html" class="nav-link">Resorts & Lounges</a>
-      <a href="bars.html" class="nav-link">Bar Residencies</a>
-      <a href="karaoke.html" class="nav-link">Karaoke & More</a>
-      <a href="quote.html" class="nav-link">Custom Quote</a>
-      <button class="nav-link nav-btn" onclick="openPaymentModal()"><i class="fa-solid fa-lock"></i> Pay Retainer</button>
-    </nav>
-  </header>
+<header>
+  <a href="index.html" class="brand-container" aria-label="Coastal Paradise Events Home">
+    <img 
+      src="assets/images/elevated_logo.svg" 
+      alt="Coastal Paradise Events - Southwest Florida" 
+      class="brand-logo" 
+      width="320" 
+      height="85"
+    />
+  </a>
+
+  <!-- Persistent Desktop Navigation Tabs -->
+  <nav id="mainNav">
+    <a href="index.html" class="nav-link active">Home</a>
+    <a href="weddings.html" class="nav-link">Weddings</a>
+    <a href="corporate.html" class="nav-link">Corporate</a>
+    <a href="resorts.html" class="nav-link">Resorts & Lounges</a>
+    <a href="bars.html" class="nav-link">Bar Residencies</a>
+    <a href="karaoke.html" class="nav-link">Karaoke & More</a>
+    <a href="quote.html" class="nav-link">Custom Quote</a>
+    <a href="quote.html#payment" class="nav-link nav-btn"><i class="fa-solid fa-lock"></i> Pay Retainer</a>
+  </nav>
+</header>
 
   <main class="page-container">
     <div class="hero">

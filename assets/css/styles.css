@@ -1,31 +1,30 @@
 :root {
   /* ========================================================
      THE NEW 'DEEP COAST' COHESIVE PALETTE
-     Matches the Exact Jacksonville Jaguars & Luxury Deep Gold 
+     Matches Exact Jacksonville Jaguars Teal & Luxury Deep Gold 
      ======================================================== */
-  --gold-primary: #D7A22A;       /* WAS #d4af37 (Rich Golden hour) */
-  --gold-light: #F5E8C7;         /* WAS #f3e5ab (Creamy warm sand) */
-  --gold-dark: #9F792C;          /* WAS #aa820a (Subtle deep bronze) */
+  --gold-primary: #D7A22A;       /* Warm Bold Gold */
+  --gold-light: #F5E8C7;         /* Creamy Warm Sand */
+  --gold-dark: #9F792C;          /* Deep Bronze / Accent Gold */
   
-  --aqua-primary: #006778;       /* WAS #00a896 (Luxe Gulf Coast teal) */
-  --aqua-glow: #00828A;          /* WAS #02c39a (Vibrant water glow/highlight) */
+  --aqua-primary: #006778;       /* Deep Jacksonville Teal */
+  --aqua-glow: #00A3AD;          /* High-Contrast Accessible Coastal Teal */
   
-  --dark-navy: #101820;          /* WAS #06101e (Official Jaguars Midnight Black) */
-  --deep-ocean: #090E14;         /* WAS #0b1a30 (A rich, pitch-black deep ocean ground) */
-  --card-bg: #141D26;            /* WAS #112240 (Perfect contrast backplane for the grid) */
-  --card-border: rgba(215, 162, 42, 0.18); /* WAS (212, 175, 55, 0.25) (Lighter custom gold border) */
+  --dark-navy: #101820;          /* Official Midnight Base */
+  --deep-ocean: #090E14;         /* Pitch-Black Ground */
+  --card-bg: #141D26;            /* Unified Elevated Surface */
+  --card-border: rgba(215, 162, 42, 0.22); /* Unified Subtle Gold Border */
   
-  --text-light: #FFFFFF;         /* WAS #f8fafc (Brilliant white) */
-  --text-muted: #9BA8B6;         /* WAS #94a3b8 (Soft sea mist gray-teal) */
+  --text-light: #FFFFFF;         /* Crisp White */
+  --text-muted: #9BA8B6;         /* Mist Slate */
 
-  /* ========================================================
-     KEEPING YOUR FONTS EXACTLY AS THEY ARE
-     ======================================================== */
+  /* Typography */
   --font-heading: 'Playfair Display', serif;
   --font-accent: 'Cinzel Decorative', serif;
   --font-body: 'Montserrat', sans-serif;
 }
 
+/* Universal Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -45,7 +44,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(6, 16, 30, 0.95);
+  background: rgba(16, 24, 32, 0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--card-border);
   padding: 0.75rem 2rem;
@@ -77,7 +76,7 @@ header {
 
 .brand-text p {
   font-size: 0.75rem;
-  color: var(--aqua-primary);
+  color: var(--gold-light);
   letter-spacing: 1.5px;
   text-transform: uppercase;
   font-weight: 600;
@@ -105,12 +104,12 @@ nav {
 
 .nav-link:hover, .nav-link.active {
   color: var(--gold-primary);
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(215, 162, 42, 0.12);
 }
 
 .nav-btn {
   background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-  color: #000 !important;
+  color: var(--dark-navy) !important;
   font-weight: 700;
   padding: 0.5rem 1.1rem;
   border-radius: 20px;
@@ -136,17 +135,17 @@ nav {
 .hero {
   text-align: center;
   padding: 3.5rem 1.5rem;
-  background: radial-gradient(circle at center, rgba(0, 168, 150, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle at center, rgba(0, 103, 120, 0.28) 0%, transparent 70%);
   border-radius: 12px;
   margin-bottom: 3rem;
-  border: 1px solid rgba(212, 175, 55, 0.15);
+  border: 1px solid var(--card-border);
 }
 
 .hero-badge {
   display: inline-block;
   padding: 0.35rem 1.2rem;
   border-radius: 20px;
-  background: rgba(212, 175, 55, 0.15);
+  background: rgba(215, 162, 42, 0.12);
   border: 1px solid var(--gold-primary);
   color: var(--gold-light);
   font-size: 0.8rem;
@@ -186,7 +185,7 @@ nav {
 
 .btn-gold {
   background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-  color: #000;
+  color: var(--dark-navy);
   border: none;
   padding: 0.85rem 2rem;
   font-size: 0.95rem;
@@ -203,7 +202,7 @@ nav {
 .btn-gold:hover {
   background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 8px 20px rgba(215, 162, 42, 0.3);
 }
 
 .btn-outline {
@@ -223,7 +222,7 @@ nav {
 }
 
 .btn-outline:hover {
-  background: rgba(0, 168, 150, 0.15);
+  background: rgba(0, 103, 120, 0.2);
   border-color: var(--aqua-glow);
   transform: translateY(-2px);
 }
@@ -264,12 +263,12 @@ nav {
 .card:hover {
   transform: translateY(-4px);
   border-color: var(--gold-primary);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
 }
 
 .card-icon {
   font-size: 2.2rem;
-  color: var(--aqua-primary);
+  color: var(--aqua-glow);
   margin-bottom: 1.25rem;
 }
 
@@ -292,7 +291,7 @@ nav {
 
 .card ul li {
   font-size: 0.85rem;
-  color: #cbd5e1;
+  color: var(--text-light);
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
@@ -306,7 +305,7 @@ nav {
 
 /* Pedigree Ribbon */
 .heritage-ribbon {
-  background: linear-gradient(135deg, var(--deep-ocean), #14284b);
+  background: linear-gradient(135deg, var(--deep-ocean), #14202c);
   border: 1px solid var(--gold-primary);
   border-radius: 12px;
   padding: 2.5rem;
@@ -348,8 +347,8 @@ nav {
 }
 
 .badge-pill {
-  background: rgba(6, 16, 30, 0.6);
-  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: rgba(16, 24, 32, 0.75);
+  border: 1px solid rgba(215, 162, 42, 0.4);
   padding: 0.4rem 0.9rem;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -386,7 +385,7 @@ nav {
   width: 100%;
   padding: 0.75rem 1rem;
   background: var(--dark-navy);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  border: 1px solid rgba(215, 162, 42, 0.35);
   border-radius: 6px;
   color: #fff;
   font-family: var(--font-body);
@@ -395,8 +394,8 @@ nav {
 
 .form-control:focus {
   outline: none;
-  border-color: var(--aqua-primary);
-  box-shadow: 0 0 8px rgba(0, 168, 150, 0.3);
+  border-color: var(--aqua-glow);
+  box-shadow: 0 0 8px rgba(0, 163, 173, 0.3);
 }
 
 .autocomplete-items {
@@ -433,8 +432,8 @@ nav {
 }
 
 .addon-item {
-  background: rgba(6, 16, 30, 0.5);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  background: rgba(9, 14, 20, 0.6);
+  border: 1px solid rgba(215, 162, 42, 0.25);
   border-radius: 8px;
   padding: 0.75rem 1rem;
   display: flex;
@@ -475,7 +474,7 @@ nav {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.85);
   z-index: 2000;
   align-items: center;
   justify-content: center;
@@ -509,7 +508,7 @@ nav {
 
 /* Footer */
 footer {
-  background: #030810;
+  background: var(--deep-ocean);
   border-top: 1px solid var(--card-border);
   padding: 2.5rem 2rem 1.5rem;
   text-align: center;

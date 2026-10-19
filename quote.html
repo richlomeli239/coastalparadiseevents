@@ -1,1 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Availability & Custom Quote | Coastal Paradise Events | SWFL</title>
+  <meta name="description" content="Check date availability, select venue parameters, and calculate your custom entertainment investment with Coastal Paradise Events." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
 
+  <header>
+    <a href="index.html" class="brand-container">
+      <svg width="46" height="46" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="48" stroke="url(#goldGradient)" stroke-width="2"/>
+        <path d="M22 65C34 50 48 72 62 56C72 44 85 58 85 58" stroke="url(#aquaGradient)" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="50" cy="38" r="14" fill="url(#goldGradient)"/>
+        <path d="M50 48V78" stroke="#d4af37" stroke-width="3" stroke-linecap="round"/>
+        <path d="M50 56C42 50 36 54 34 60" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M50 62C58 56 64 60 66 66" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="goldGradient" x1="0" y1="0" x2="100" y2="100">
+            <stop offset="0%" stop-color="#f3e5ab"/>
+            <stop offset="50%" stop-color="#d4af37"/>
+            <stop offset="100%" stop-color="#aa820a"/>
+          </linearGradient>
+          <linearGradient id="aquaGradient" x1="0" y1="0" x2="100" y2="100">
+            <stop offset="0%" stop-color="#02c39a"/>
+            <stop offset="100%" stop-color="#00a896"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="brand-text">
+        <h1>COASTAL PARADISE <span>EVENTS</span></h1>
+        <p>Southwest Florida</p>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="weddings.html" class="nav-link">Weddings</a>
+      <a href="corporate.html" class="nav-link">Corporate</a>
+      <a href="resorts.html" class="nav-link">Resorts & Lounges</a>
+      <a href="bars.html" class="nav-link">Bar Residencies</a>
+      <a href="karaoke.html" class="nav-link">Karaoke & More</a>
+      <a href="quote.html" class="nav-link active">Custom Quote</a>
+      <button class="nav-link nav-btn" onclick="openPaymentModal()"><i class="fa-solid fa-lock"></i> Pay Retainer</button>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <div class="hero" style="padding: 2.5rem 1rem;">
+      <div class="hero-badge"><i class="fa-solid fa-calendar-days"></i> Direct Availability</div>
+      <h2>Plan Your Experience & <span>Lock Your Date</span></h2>
+      <p>Select your event details below to check regional availability and view instant transparent investment estimates.</p>
+    </div>
+
+    <div class="quote-box">
+      <form id="quoteForm" onsubmit="handleQuoteSubmit(event)">
+        
+        <div class="form-group">
+          <label><i class="fa-solid fa-tag"></i> Event Type</label>
+          <select id="eventType" class="form-control" onchange="updateEstimatedPrice()">
+            <option value="wedding_combo">Wedding (Ceremony & Reception)</option>
+            <option value="wedding_reception">Wedding (Reception Only)</option>
+            <option value="wedding_ceremony">Wedding (Ceremony Only)</option>
+            <option value="corporate">Corporate Event / Gala / Awards Banquet</option>
+            <option value="resort">Beach Resort / Hotel Lounge Entertainment</option>
+            <option value="bar_residency">Bar & Grill / Nightclub Residency</option>
+            <option value="private_party">Private Party (Birthday, Anniversary, Milestone)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-map-location-dot"></i> Southwest Florida City</label>
+          <select id="swflCity" class="form-control" onchange="updateEstimatedPrice()">
+            <option value="Fort Myers">Fort Myers</option>
+            <option value="Cape Coral">Cape Coral</option>
+            <option value="Naples">Naples</option>
+            <option value="Sanibel Island">Sanibel Island</option>
+            <option value="Captiva Island">Captiva Island</option>
+            <option value="Bonita Springs">Bonita Springs</option>
+            <option value="Estero">Estero</option>
+            <option value="Fort Myers Beach">Fort Myers Beach</option>
+            <option value="Other">Other Lee / Collier Location</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-location-dot"></i> Venue Name or Address</label>
+          <input type="text" id="venueInput" class="form-control" placeholder="Start typing venue name or street address..." oninput="autocompleteVenue(this.value)" autocomplete="off" />
+          <div id="autocompleteList" class="autocomplete-items" style="display:none;"></div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-regular fa-calendar"></i> Requested Event Date</label>
+          <input type="date" id="eventDate" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-sliders"></i> Production Add-Ons & Enhancements</label>
+          <div class="addons-grid">
+            <label class="addon-item">
+              <input type="checkbox" id="addonTurntables" onchange="updateEstimatedPrice()" />
+              <span class="addon-label">Technics 1200 / CDJ Setup</span>
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" id="addonLighting" onchange="updateEstimatedPrice()" />
+              <span class="addon-label">Professional Lighting</span>
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" id="addonKaraoke" onchange="updateEstimatedPrice()" />
+              <span class="addon-label">Live Console Karaoke</span>
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" id="addonSingo" onchange="updateEstimatedPrice()" />
+              <span class="addon-label">Singo / Pub Trivia</span>
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" id="addonGenerator" onchange="updateEstimatedPrice()" />
+              <span class="addon-label">Ceremony Generator Power</span>
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" id="addonHaze" onchange="updateEstimatedPrice()" />
+              <span class="addon-label">Atmospheric Smoke / Haze</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="price-display">
+          <div style="font-size: 0.85rem; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.25rem;">Estimated Investment Package</div>
+          <div class="price-tag" id="priceDisplay">$XXX</div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Customized to your exact venue parameters, hours & gear configuration</div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button type="submit" class="btn-gold" style="flex: 2;"><i class="fa-solid fa-paper-plane"></i> Request Availability Confirmation</button>
+          <button type="button" class="btn-outline" style="flex: 1;" onclick="openPaymentModal()"><i class="fa-solid fa-lock"></i> Pay Retainer</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <div id="paymentModal" class="modal-overlay">
+    <div class="modal-card">
+      <button class="close-modal" onclick="closePaymentModal()">&times;</button>
+      <h3 style="font-family: var(--font-heading); color: var(--gold-light); margin-bottom: 0.5rem;"><i class="fa-solid fa-shield-halved"></i> Lock Your Date Online</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">Submit your retainer deposit via secure digital checkout to confirm your reservation on our Southwest Florida calendar.</p>
+      <form onsubmit="handlePaymentSubmit(event)">
+        <div class="form-group">
+          <label>Client Full Name</label>
+          <input type="text" class="form-control" placeholder="Name on reservation" required />
+        </div>
+        <div class="form-group">
+          <label>Event Date</label>
+          <input type="date" class="form-control" required />
+        </div>
+        <div class="form-group">
+          <label>Payment Method</label>
+          <select class="form-control">
+            <option>Credit / Debit Card (Secure Stripe Checkout)</option>
+            <option>Apple Pay / Google Pay</option>
+            <option>Direct ACH / Zelle Invoice Request</option>
+          </select>
+        </div>
+        <div class="price-display" style="padding: 0.75rem; margin-bottom: 1rem;">
+          <span style="font-size: 0.9rem; color: #fff;">Retainer Deposit Amount: </span>
+          <span style="color: var(--gold-primary); font-weight: 700; font-size: 1.2rem;">$XXX</span>
+        </div>
+        <button type="submit" class="btn-gold" style="width: 100%;">Process Secure Retainer</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="brand-text">
+      <h2 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--text-light);">COASTAL PARADISE <span style="color: var(--gold-primary);">EVENTS</span></h2>
+      <p style="color: var(--aqua-primary); font-size: 0.75rem; letter-spacing: 1.5px;">Southwest Florida • (239) XXX-XXXX</p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="weddings.html">Weddings</a>
+      <a href="corporate.html">Corporate</a>
+      <a href="resorts.html">Resorts</a>
+      <a href="bars.html">Bar Residencies</a>
+      <a href="karaoke.html">Karaoke & More</a>
+      <a href="quote.html">Custom Quote</a>
+      <a href="#" onclick="openPaymentModal(); return false;">Pay Retainer</a>
+    </div>
+    <p>&copy; 2026 Coastal Paradise Events. All rights reserved. Servicing Fort Myers, Cape Coral, Naples, Sanibel, Captiva, Bonita Springs, and Estero.</p>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

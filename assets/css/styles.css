@@ -1,23 +1,30 @@
 :root {
   /* ========================================================
-     LUXURY GULF NOIR PALETTE
-     Matches the Open Horizon Logo: Clean Aqua Waves & Warm Sun
+     ELEVATED SHIELD BRAND PALETTE
+     Directly matched to the new logo vector asset:
+     Gold linework, Deep Sea Teal, and Midnight Shield Ground
      ======================================================== */
-  --gold-primary: #D4AF37;       /* Rich Mediterranean / Gulf Gold */
+  --gold-primary: #D7A22A;       /* Shield Sun & Line Gold */
   --gold-light: #F5E8C7;         /* Warm Sand Highlight */
-  --gold-dark: #9E7D23;          /* Burnished Antique Gold */
+  --gold-dark: #9F792C;          /* Deep Bronze / Accent Gold */
 
-  --aqua-primary: #00A896;       /* True Gulf Aqua (Clean, not muddy teal) */
-  --aqua-glow: #02C39A;          /* Bioluminescent Cyan for Icons & Hovers */
+  --teal-primary: #007A87;       /* Shield Surf & Palm Teal */
+  --teal-glow: #009EAD;          /* High-Contrast Interactive Hover */
 
-  /* Neutral Obsidian Base — Completely eliminates the "blue square" clash */
-  --dark-navy: #0C1014;          /* Main Page Canvas: Deep Obsidian */
-  --deep-ocean: #070A0D;         /* Darkest Base: Dropdowns & Footer */
-  --card-bg: #141A1F;            /* Card & Section Surfaces: Rich Charcoal Slate */
-  --card-border: rgba(212, 175, 55, 0.22); /* Clean, Warm Gold Hairline Border */
+  /* Neutral Midnight Canvas - Eliminates container clashes */
+  --midnight-base: #0D161F;      /* Exact Shield Interior Color */
+  --midnight-dark: #070C12;      /* Deepest Ground (Footer, Inputs) */
+  --card-bg: #141F2B;            /* Elevated Cards & Container Backplane */
+  --card-border: rgba(215, 162, 42, 0.24); /* Hairline Gold Border */
+
+  /* Aliases for legacy component support */
+  --dark-navy: var(--midnight-base);
+  --deep-ocean: var(--midnight-dark);
+  --aqua-primary: var(--teal-primary);
+  --aqua-glow: var(--teal-glow);
 
   --text-light: #FFFFFF;         /* Crisp White */
-  --text-muted: #A0ACB8;         /* Neutral Coastal Mist Gray */
+  --text-muted: #9BA8B6;         /* Slate Mist Gray */
 
   /* Typography */
   --font-heading: 'Playfair Display', serif;
@@ -34,55 +41,50 @@
 
 body {
   font-family: var(--font-body);
-  background-color: var(--dark-navy);
+  background-color: var(--midnight-base);
   color: var(--text-light);
   line-height: 1.6;
   overflow-x: hidden;
 }
 
-/* Header & Navigation */
+/* ========================================================
+   HEADER & ELEVATED SHIELD LOGO
+   ======================================================== */
 header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(12, 16, 20, 0.95);
+  background: rgba(13, 22, 31, 0.96);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--card-border);
-  padding: 0.75rem 2rem;
+  padding: 0.6rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .brand-container {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 1rem;
   text-decoration: none;
-  color: inherit;
-  cursor: pointer;
+  line-height: 0;
 }
 
-.brand-text h1 {
-  font-family: var(--font-heading);
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--text-light);
-  letter-spacing: 0.5px;
+.brand-logo {
+  height: 60px;
+  width: auto;
+  max-width: 310px;
+  display: block;
+  object-fit: contain;
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-.brand-text h1 span {
-  color: var(--gold-primary);
+.brand-container:hover .brand-logo {
+  transform: scale(1.02);
+  opacity: 0.95;
 }
 
-.brand-text p {
-  font-size: 0.75rem;
-  color: var(--gold-light);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
+/* Navigation Tabs */
 nav {
   display: flex;
   align-items: center;
@@ -105,12 +107,12 @@ nav {
 
 .nav-link:hover, .nav-link.active {
   color: var(--gold-primary);
-  background: rgba(212, 175, 55, 0.12);
+  background: rgba(215, 162, 42, 0.12);
 }
 
 .nav-btn {
   background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-  color: var(--dark-navy) !important;
+  color: var(--midnight-base) !important;
   font-weight: 700;
   padding: 0.5rem 1.1rem;
   border-radius: 20px;
@@ -124,7 +126,9 @@ nav {
   transform: translateY(-1px);
 }
 
-/* Page Container */
+/* ========================================================
+   PAGE LAYOUT & SECTIONS
+   ======================================================== */
 .page-container {
   min-height: calc(100vh - 160px);
   padding: 3rem 2rem;
@@ -136,7 +140,7 @@ nav {
 .hero {
   text-align: center;
   padding: 3.5rem 1.5rem;
-  background: radial-gradient(circle at center, rgba(0, 168, 150, 0.18) 0%, transparent 72%);
+  background: radial-gradient(circle at center, rgba(0, 122, 135, 0.22) 0%, transparent 72%);
   border-radius: 12px;
   margin-bottom: 3rem;
   border: 1px solid var(--card-border);
@@ -146,7 +150,7 @@ nav {
   display: inline-block;
   padding: 0.35rem 1.2rem;
   border-radius: 20px;
-  background: rgba(212, 175, 55, 0.12);
+  background: rgba(215, 162, 42, 0.12);
   border: 1px solid var(--gold-primary);
   color: var(--gold-light);
   font-size: 0.8rem;
@@ -179,274 +183,3 @@ nav {
 
 .hero-btns {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.btn-gold {
-  background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-  color: var(--dark-navy);
-  border: none;
-  padding: 0.85rem 2rem;
-  font-size: 0.95rem;
-  font-weight: 700;
-  border-radius: 30px;
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.3s ease;
-}
-
-.btn-gold:hover {
-  background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
-}
-
-.btn-outline {
-  background: transparent;
-  border: 1px solid var(--aqua-primary);
-  color: var(--aqua-glow);
-  padding: 0.85rem 2rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  border-radius: 30px;
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.3s ease;
-}
-
-.btn-outline:hover {
-  background: rgba(0, 168, 150, 0.18);
-  border-color: var(--aqua-glow);
-  transform: translateY(-2px);
-}
-
-/* Grids & Cards */
-.section-title {
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 0.5rem;
-  color: var(--gold-light);
-}
-
-.section-subtitle {
-  text-align: center;
-  color: var(--text-muted);
-  margin-bottom: 2.5rem;
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.grid-3 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3.5rem;
-}
-
-.card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  border-color: var(--gold-primary);
-  box-shadow: 0 12px 30px rgba(0, 168, 150, 0.15);
-}
-
-.card-icon {
-  font-size: 2.2rem;
-  color: var(--aqua-glow);
-  margin-bottom: 1.25rem;
-}
-
-.card h3 {
-  font-family: var(--font-heading);
-  font-size: 1.35rem;
-  margin-bottom: 0.85rem;
-  color: var(--text-light);
-}
-
-.card p {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 1.2rem;
-}
-
-.card ul {
-  list-style: none;
-}
-
-.card ul li {
-  font-size: 0.85rem;
-  color: var(--text-light);
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.card ul li i {
-  color: var(--gold-primary);
-  font-size: 0.8rem;
-}
-
-/* Pedigree Ribbon */
-.heritage-ribbon {
-  background: linear-gradient(135deg, #10151B, #161E25);
-  border: 1px solid var(--gold-primary);
-  border-radius: 12px;
-  padding: 2.5rem;
-  margin-bottom: 3.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.heritage-header {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-}
-
-.heritage-header i {
-  font-size: 2.5rem;
-  color: var(--gold-primary);
-}
-
-.heritage-header h3 {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  color: var(--gold-light);
-}
-
-.heritage-header p {
-  color: var(--aqua-glow);
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.heritage-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
-}
-
-.badge-pill {
-  background: rgba(12, 16, 20, 0.85);
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  padding: 0.4rem 0.9rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  color: #f1f5f9;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-/* Form & Quote Box */
-.quote-box {
-  background: var(--card-bg);
-  border: 1px solid var(--gold-primary);
-  border-radius: 12px;
-  padding: 2.5rem;
-  max-width: 800px;
-  margin: 0 auto;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-  position: relative;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--gold-light);
-}
-
-.form-control {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  background: var(--dark-navy);
-  border: 1px solid rgba(212, 175, 55, 0.35);
-  border-radius: 6px;
-  color: #fff;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-}
-
-.form-control:focus {
-  outline: none;
-  border-color: var(--aqua-glow);
-  box-shadow: 0 0 8px rgba(2, 195, 154, 0.3);
-}
-
-.autocomplete-items {
-  position: absolute;
-  border: 1px solid var(--gold-primary);
-  border-top: none;
-  z-index: 99;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background-color: var(--deep-ocean);
-  border-radius: 0 0 6px 6px;
-  max-height: 200px;
-  overflow-y: auto;
-}
-
-.autocomplete-items div {
-  padding: 10px;
-  cursor: pointer;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  font-size: 0.85rem;
-}
-
-.autocomplete-items div:hover {
-  background-color: var(--card-bg);
-  color: var(--gold-primary);
-}
-
-.addons-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-
-.addon-item {
-  background: rgba(7, 10, 13, 0.7);
-  border: 1px solid rgba(212, 175, 55, 0.25);
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  cursor: pointer;
-}
-
-.addon-item input[type="checkbox"] {
-  accent-color: var(--gold-primary);
-  width: 18px;
-  height: 18px;
-}

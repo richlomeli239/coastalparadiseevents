@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coastal Paradise Events | Event Planning & Design</title>
-  <meta name="description" content="Premier coastal event planning, weddings, corporate retreats, and private celebrations.">
-  <link rel="canonical" href="https://coastalparadiseevents.com/">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coastal Paradise Events | Premier DJ, MC & Entertainment | Southwest Florida</title>
+  <meta name="description" content="Luxury wedding DJ & Master of Ceremonies, corporate galas, waterfront resort entertainment, live mixing karaoke, Singo, and pub trivia across Fort Myers, Cape Coral, Naples, Sanibel, Captiva, Bonita Springs, and Estero." />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <style>
     :root {
-      --primary: #1A3644;
-      --accent: #007791;
-      --sand: #F7F5F0;
-      --text: #2D3748;
-      --muted: #718096;
-      --white: #FFFFFF;
+      --gold-primary: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-dark: #aa820a;
+      --aqua-primary: #00a896;
+      --aqua-glow: #02c39a;
+      --dark-navy: #06101e;
+      --deep-ocean: #0b1a30;
+      --card-bg: #112240;
+      --card-border: rgba(212, 175, 55, 0.25);
+      --text-light: #f8fafc;
+      --text-muted: #94a3b8;
+      --font-heading: 'Playfair Display', serif;
+      --font-accent: 'Cinzel Decorative', serif;
+      --font-body: 'Montserrat', sans-serif;
     }
 
     * {
@@ -24,250 +39,1046 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      color: var(--text);
-      background-color: var(--white);
+      font-family: var(--font-body);
+      background-color: var(--dark-navy);
+      color: var(--text-light);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    /* Navigation */
+    /* Header & Navigation */
     header {
-      background: var(--white);
-      border-bottom: 1px solid #E2E8F0;
       position: sticky;
       top: 0;
-      z-index: 10;
-    }
-
-    .nav-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 1.25rem 1.5rem;
+      z-index: 1000;
+      background: rgba(6, 16, 30, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 0.75rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .brand {
-      font-size: 1.25rem;
+    .brand-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .brand-text h1 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      color: var(--text-light);
+      letter-spacing: 0.5px;
+    }
+
+    .brand-text h1 span {
+      color: var(--gold-primary);
+    }
+
+    .brand-text p {
+      font-size: 0.75rem;
+      color: var(--aqua-primary);
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: var(--primary);
-      text-decoration: none;
+      font-weight: 600;
     }
 
-    .nav-links a {
-      margin-left: 1.5rem;
-      color: var(--text);
-      text-decoration: none;
-      font-size: 0.95rem;
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-link {
+      background: none;
+      border: none;
+      color: var(--text-light);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
       font-weight: 500;
-      transition: color 0.2s;
+      padding: 0.5rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    .nav-links a:hover {
-      color: var(--accent);
+    .nav-link:hover, .nav-link.active {
+      color: var(--gold-primary);
+      background: rgba(212, 175, 55, 0.1);
     }
 
-    /* Hero */
-    .hero {
-      background-color: var(--sand);
-      padding: 5rem 1.5rem 6rem;
-      text-align: center;
+    .nav-btn {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+      color: #000 !important;
+      font-weight: 700;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      margin-left: 0.5rem;
     }
 
-    .hero-content {
-      max-width: 750px;
+    .nav-btn:hover {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+      transform: translateY(-1px);
+    }
+
+    /* Pages Container */
+    .page-section {
+      display: none;
+      min-height: calc(100vh - 160px);
+      padding: 3rem 2rem;
+      max-width: 1200px;
       margin: 0 auto;
+      animation: fadeIn 0.4s ease-in-out;
     }
 
-    .hero h1 {
-      font-size: 2.75rem;
-      color: var(--primary);
+    .page-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem;
+      background: radial-gradient(circle at center, rgba(0, 168, 150, 0.15) 0%, transparent 70%);
+      border-radius: 12px;
+      margin-bottom: 3rem;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 0.35rem 1.2rem;
+      border-radius: 20px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-light);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .hero h2 {
+      font-family: var(--font-heading);
+      font-size: 2.8rem;
       line-height: 1.2;
       margin-bottom: 1.25rem;
-      font-weight: 700;
+      color: var(--text-light);
+    }
+
+    .hero h2 span {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hero p {
-      font-size: 1.2rem;
-      color: var(--muted);
-      margin-bottom: 2rem;
+      max-width: 820px;
+      margin: 0 auto 2rem;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      font-weight: 400;
     }
 
-    .btn {
-      display: inline-block;
-      background-color: var(--accent);
-      color: var(--white);
-      padding: 0.85rem 1.75rem;
-      border-radius: 6px;
-      text-decoration: none;
+    .hero-btns {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+      color: #000;
+      border: none;
+      padding: 0.85rem 2rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 30px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-gold:hover {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--aqua-primary);
+      color: var(--aqua-glow);
+      padding: 0.85rem 2rem;
+      font-size: 0.95rem;
       font-weight: 600;
-      transition: background-color 0.2s;
+      border-radius: 30px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
     }
 
-    .btn:hover {
-      background-color: var(--primary);
+    .btn-outline:hover {
+      background: rgba(0, 168, 150, 0.15);
+      border-color: var(--aqua-glow);
+      transform: translateY(-2px);
     }
 
-    /* Services */
-    .services {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 5rem 1.5rem;
-    }
-
+    /* Value Pillars & Cards */
     .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-title h2 {
+      font-family: var(--font-heading);
       font-size: 2rem;
-      color: var(--primary);
+      text-align: center;
       margin-bottom: 0.5rem;
+      color: var(--gold-light);
     }
 
-    .section-title p {
-      color: var(--muted);
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .grid {
+    .grid-3 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
+      margin-bottom: 3.5rem;
     }
 
     .card {
-      background: var(--white);
-      border: 1px solid #E2E8F0;
-      border-radius: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
       padding: 2rem;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: all 0.3s ease;
     }
 
     .card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+      border-color: var(--gold-primary);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    }
+
+    .card-icon {
+      font-size: 2.2rem;
+      color: var(--aqua-primary);
+      margin-bottom: 1.25rem;
     }
 
     .card h3 {
-      font-size: 1.3rem;
-      color: var(--primary);
-      margin-bottom: 0.75rem;
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      margin-bottom: 0.85rem;
+      color: var(--text-light);
     }
 
     .card p {
-      color: var(--muted);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .card ul {
+      list-style: none;
+    }
+
+    .card ul li {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card ul li i {
+      color: var(--gold-primary);
+      font-size: 0.8rem;
+    }
+
+    /* Founder Heritage Ribbon */
+    .heritage-ribbon {
+      background: linear-gradient(135deg, var(--deep-ocean), #14284b);
+      border: 1px solid var(--gold-primary);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .heritage-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .heritage-header i {
+      font-size: 2.5rem;
+      color: var(--gold-primary);
+    }
+
+    .heritage-header h3 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      color: var(--gold-light);
+    }
+
+    .heritage-header p {
+      color: var(--aqua-glow);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .heritage-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .badge-pill {
+      background: rgba(6, 16, 30, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: #f1f5f9;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Calculator & Booking Form */
+    .quote-box {
+      background: var(--card-bg);
+      border: 1px solid var(--gold-primary);
+      border-radius: 12px;
+      padding: 2.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--gold-light);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--dark-navy);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 6px;
+      color: #fff;
+      font-family: var(--font-body);
       font-size: 0.95rem;
     }
 
-    /* CTA Section */
-    .cta-banner {
-      background-color: var(--primary);
-      color: var(--white);
+    .form-control:focus {
+      outline: none;
+      border-color: var(--aqua-primary);
+      box-shadow: 0 0 8px rgba(0, 168, 150, 0.3);
+    }
+
+    .autocomplete-items {
+      position: absolute;
+      border: 1px solid var(--gold-primary);
+      border-top: none;
+      z-index: 99;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: var(--deep-ocean);
+      border-radius: 0 0 6px 6px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .autocomplete-items div {
+      padding: 10px;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.85rem;
+    }
+
+    .autocomplete-items div:hover {
+      background-color: var(--card-bg);
+      color: var(--gold-primary);
+    }
+
+    .addons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .addon-item {
+      background: rgba(6, 16, 30, 0.5);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+    }
+
+    .addon-item input[type="checkbox"] {
+      accent-color: var(--gold-primary);
+      width: 18px;
+      height: 18px;
+    }
+
+    .addon-label {
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .price-display {
+      background: var(--deep-ocean);
+      border: 1px dashed var(--gold-primary);
+      padding: 1.25rem;
+      border-radius: 8px;
       text-align: center;
-      padding: 4rem 1.5rem;
+      margin-bottom: 1.5rem;
     }
 
-    .cta-banner h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+    .price-tag {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      color: var(--gold-primary);
+      font-weight: 700;
     }
 
-    .cta-banner p {
-      color: #CBD5E0;
-      max-width: 600px;
-      margin: 0 auto 2rem;
+    /* Modal for Payment */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(5px);
     }
 
-    .btn-light {
-      background-color: var(--white);
-      color: var(--primary);
+    .modal-overlay.active {
+      display: flex;
     }
 
-    .btn-light:hover {
-      background-color: var(--sand);
-      color: var(--primary);
+    .modal-card {
+      background: var(--card-bg);
+      border: 1px solid var(--gold-primary);
+      border-radius: 12px;
+      max-width: 500px;
+      width: 90%;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1.2rem;
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      background: none;
+      border: none;
     }
 
     /* Footer */
     footer {
-      border-top: 1px solid #E2E8F0;
+      background: #030810;
+      border-top: 1px solid var(--card-border);
+      padding: 2.5rem 2rem 1.5rem;
       text-align: center;
-      padding: 2rem 1.5rem;
-      font-size: 0.875rem;
-      color: var(--muted);
+      font-size: 0.85rem;
+      color: var(--text-muted);
     }
 
-    @media (max-width: 640px) {
-      .hero h1 {
-        font-size: 2rem;
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-primary);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
       }
-      .nav-links {
-        display: none; /* simple fallback for initial mobile view */
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .hero h2 {
+        font-size: 2rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Header -->
   <header>
-    <div class="nav-container">
-      <a href="/" class="brand">Coastal Paradise Events</a>
-      <nav class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
+    <div class="brand-container" onclick="showPage('home')">
+      <!-- SVG Luxury Brand Crest -->
+      <svg width="46" height="46" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="48" stroke="url(#goldGradient)" stroke-width="2"/>
+        <path d="M22 65C34 50 48 72 62 56C72 44 85 58 85 58" stroke="url(#aquaGradient)" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="50" cy="38" r="14" fill="url(#goldGradient)"/>
+        <path d="M50 48V78" stroke="#d4af37" stroke-width="3" stroke-linecap="round"/>
+        <path d="M50 56C42 50 36 54 34 60" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M50 62C58 56 64 60 66 66" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="goldGradient" x1="0" y1="0" x2="100" y2="100">
+            <stop offset="0%" stop-color="#f3e5ab"/>
+            <stop offset="50%" stop-color="#d4af37"/>
+            <stop offset="100%" stop-color="#aa820a"/>
+          </linearGradient>
+          <linearGradient id="aquaGradient" x1="0" y1="0" x2="100" y2="100">
+            <stop offset="0%" stop-color="#02c39a"/>
+            <stop offset="100%" stop-color="#00a896"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="brand-text">
+        <h1>COASTAL PARADISE <span>EVENTS</span></h1>
+        <p>Southwest Florida</p>
+      </div>
     </div>
+
+    <!-- Navigation Tabs -->
+    <nav id="mainNav">
+      <button class="nav-link active" onclick="showPage('home')">Home</button>
+      <button class="nav-link" onclick="showPage('weddings')">Weddings</button>
+      <button class="nav-link" onclick="showPage('corporate')">Corporate</button>
+      <button class="nav-link" onclick="showPage('resorts')">Resorts & Lounges</button>
+      <button class="nav-link" onclick="showPage('bars')">Bar & Grill Residencies</button>
+      <button class="nav-link" onclick="showPage('karaoke')">Karaoke & More</button>
+      <button class="nav-link" onclick="showPage('availability')">Custom Quote</button>
+      <button class="nav-link nav-btn" onclick="openPaymentModal()"><i class="fa-solid fa-lock"></i> Pay Retainer</button>
+    </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Unforgettable Gatherings by the Coast</h1>
-      <p>Bespoke event planning, coastal weddings, corporate retreats, and private celebrations tailored to your exact vision.</p>
-      <a href="#contact" class="btn">Inquire About Your Date</a>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="services">
-    <div class="section-title">
-      <h2>Curated Event Services</h2>
-      <p>From concept to execution, we take care of every detail.</p>
-    </div>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Coastal Weddings</h3>
-        <p>Full-service wedding planning, rehearsal dinners, and oceanfront ceremonies designed for timeless memories.</p>
-      </div>
-      <div class="card">
-        <h3>Corporate Retreats</h3>
-        <p>Productive, memorable company events and executive getaways with seamless logistics and local excursions.</p>
-      </div>
-      <div class="card">
-        <h3>Private Celebrations</h3>
-        <p>Milestone birthdays, anniversaries, and luxury beach gatherings crafted with intimate styling and culinary excellence.</p>
+  <!-- ==================== PAGE 1: HOME ==================== -->
+  <main id="home" class="page-section active">
+    <div class="hero">
+      <div class="hero-badge"><i class="fa-solid fa-gem"></i> Bespoke Event Entertainment</div>
+      <h2>Southwest Florida’s Benchmark for <span>Flawless Celebrations</span></h2>
+      <p>
+        Bespoke entertainment engineered for couples, event planners, luxury resorts, and high-energy venues throughout Fort Myers, Cape Coral, Naples, Sanibel, Captiva, Bonita Springs, and Estero.
+      </p>
+      <div class="hero-btns">
+        <button class="btn-gold" onclick="showPage('availability')">Check Date & Availability</button>
+        <button class="btn-outline" onclick="showPage('weddings')">Explore Wedding Experiences</button>
       </div>
     </div>
-  </section>
 
-  <!-- Contact CTA -->
-  <section id="contact" class="cta-banner">
-    <h2>Let’s Plan Your Event</h2>
-    <p>Reach out to discuss dates, venue recommendations, or custom planning packages.</p>
-    <a href="mailto:info@coastalparadiseevents.com" class="btn btn-light">Email Us Directly</a>
-  </section>
+    <!-- Founder Pedigree Ribbon -->
+    <div class="heritage-ribbon">
+      <div class="heritage-header">
+        <i class="fa-solid fa-compact-disc"></i>
+        <div>
+          <h3>Former Radio & Nightclub DJ | Accomplished Master of Ceremonies</h3>
+          <p>Over 1,000+ Celebrations | Iconic Midwest & East Coast Residencies | International Tours</p>
+        </div>
+      </div>
+      <p style="font-size: 0.95rem; color: #cbd5e1;">
+        Originating as a high-visibility wedding DJ and promoted to lead national franchise training instructor, our founder brings decades of live room-commanding expertise. Having performed across Europe while serving in the U.S. Navy, headlining major military galas at SAC Headquarters, and coordinating live sports entertainment, your celebration is anchored by world-class crowd psychology and polished, articulate microphone authority.
+      </p>
+      <div class="heritage-badges">
+        <span class="badge-pill"><i class="fa-solid fa-award"></i> Former National Franchise Head Trainer</span>
+        <span class="badge-pill"><i class="fa-solid fa-globe"></i> International Performance Veteran</span>
+        <span class="badge-pill"><i class="fa-solid fa-sliders"></i> Dual Technics 1200 Vinyl Capability</span>
+        <span class="badge-pill"><i class="fa-solid fa-camera"></i> 100% Media Synchronization Harmony</span>
+      </div>
+    </div>
+
+    <!-- Core Services Overview -->
+    <h3 class="section-title">Specialized Entertainment Pillars</h3>
+    <p class="section-subtitle">Tailored specifically for Southwest Florida's luxury coastal market</p>
+    
+    <div class="grid-3">
+      <div class="card">
+        <i class="fa-solid fa-rings-wedding card-icon"></i>
+        <h3>Weddings & Coordination</h3>
+        <p>Stress-free wedding days marked by seamless timeline mastery, elegant MC introductions, and packed dance floors.</p>
+        <ul>
+          <li><i class="fa-solid fa-check"></i> 100% Synchronized with Your Photo/Video Team</li>
+          <li><i class="fa-solid fa-check"></i> High-Grade Corded & Cordless Microphones</li>
+          <li><i class="fa-solid fa-check"></i> Generator Power for Off-Grid Beach Ceremonies</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-briefcase card-icon"></i>
+        <h3>Corporate & Galas</h3>
+        <p>Polished corporate production, awards galas, and brand celebrations with pristine audio and crystal-clear speech intelligibility.</p>
+        <ul>
+          <li><i class="fa-solid fa-check"></i> Executive Microphone & Speech Control</li>
+          <li><i class="fa-solid fa-check"></i> Ambient Cocktail & Dinner Score</li>
+          <li><i class="fa-solid fa-check"></i> Professional Lighting Configurations</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-umbrella-beach card-icon"></i>
+        <h3>Resorts & Waterfront Lounges</h3>
+        <p>Atmospheric tropical house, upscale sunset lounge rhythms, and curated day-party soundtracks for coastal hotels.</p>
+        <ul>
+          <li><i class="fa-solid fa-check"></i> High-Touch Hospitality Alignment</li>
+          <li><i class="fa-solid fa-check"></i> Turntable & Digital Console Staging</li>
+          <li><i class="fa-solid fa-check"></i> Sophisticated Volume & Acoustics Management</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== PAGE 2: WEDDINGS ==================== -->
+  <main id="weddings" class="page-section">
+    <div class="hero">
+      <div class="hero-badge"><i class="fa-solid fa-heart"></i> White-Glove Wedding Perfection</div>
+      <h2>Every Milestone Handled With <span>Absolute Mastery</span></h2>
+      <p>
+        From your seaside vows to the final crescendo on the dance floor, we combine masterful room pacing, zero cheesy gimmicks, and complete timeline leadership.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <i class="fa-solid fa-microphone-lines card-icon"></i>
+        <h3>Articulate Master of Ceremonies</h3>
+        <p>Polished, dignified room management. We coordinate your grand entrance, formal toasts, first dances, and cake cutting with warmth and precision.</p>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-hands-holding-circle card-icon"></i>
+        <h3>100% Media Vendor Harmony</h3>
+        <p>Bring your own photographer or videographer! We work in complete harmony, cueing them before every key moment so nothing is ever missed.</p>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-sun-plant-wilt card-icon"></i>
+        <h3>Beach & Remote Ceremonies</h3>
+        <p>Zero power outlets on the sand? We deploy dedicated generator power alongside crystal-clear wireless lapel and handheld microphones.</p>
+      </div>
+    </div>
+
+    <div class="heritage-ribbon">
+      <h3 style="color: var(--gold-light); font-family: var(--font-heading); margin-bottom: 1rem;">Complete Wedding Timeline Stewardship</h3>
+      <p style="color: #cbd5e1; font-size: 0.95rem;">
+        Having personally planned and directed multiple coastal weddings and coordinated over a thousand receptions, we manage everything from processional cueing to the last dance. We take the stress off your shoulders so you and your guests can simply celebrate.
+      </p>
+      <div style="margin-top: 1.5rem;">
+        <button class="btn-gold" onclick="showPage('availability')">Reserve Your Wedding Date</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== PAGE 3: CORPORATE ==================== -->
+  <main id="corporate" class="page-section">
+    <div class="hero">
+      <div class="hero-badge"><i class="fa-solid fa-building"></i> Corporate Excellence</div>
+      <h2>Elevating Brand Galas, Conferences & <span>Executive Banquets</span></h2>
+      <p>
+        Reliable audio fidelity, articulate speech moderation, and dynamic celebration soundtracks tailored for enterprise organizations, associations, and civic foundations.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <i class="fa-solid fa-award card-icon"></i>
+        <h3>Award Galas & Banquets</h3>
+        <p>Precision walk-up stagers, crisp speech audio, and perfectly timed background scoring that keeps multi-hour awards moving smoothly.</p>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-lightbulb card-icon"></i>
+        <h3>Professional Lighting</h3>
+        <p>Sleek perimeter uplighting and architectural color washes that match your exact company brand guidelines and logo palette.</p>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-headset card-icon"></i>
+        <h3>Full AV Integration</h3>
+        <p>Pro sound with flexible inputs for keynote presentations, video playback audio, and high-frequency wireless microphone clarity.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== PAGE 4: RESORTS & LOUNGES ==================== -->
+  <main id="resorts" class="page-section">
+    <div class="hero">
+      <div class="hero-badge"><i class="fa-solid fa-martini-glass"></i> Luxury Hospitality</div>
+      <h2>Curated Soundscapes for <span>Waterfront Resorts & Lounges</span></h2>
+      <p>
+        Elevating guest dwell time and beverage revenue with sophisticated musical programming across Fort Myers Beach, Naples, Sanibel, and Captiva resorts.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <i class="fa-solid fa-water card-icon"></i>
+        <h3>Sunset Sessions</h3>
+        <p>Chilled organic house, coastal jazz, and acoustic remix vibes timed to Southwest Florida’s world-famous Gulf sunsets.</p>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-cocktail card-icon"></i>
+        <h3>Pool Deck Vibe</h3>
+        <p>Lively, high-end pool soundtracks that keep guests refreshed, relaxed, and ordering without overbearing volume.</p>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-compact-disc card-icon"></i>
+        <h3>Vinyl & Digital Flexibility</h3>
+        <p>Authentic dual Technics 1200 turntables or sleek digital Pioneer consoles for a distinct, visually striking aesthetic.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== PAGE 5: BAR & GRILL RESIDENCIES ==================== -->
+  <main id="bars" class="page-section">
+    <div class="hero">
+      <div class="hero-badge"><i class="fa-solid fa-beer-mug-empty"></i> High-Volume Nightlife</div>
+      <h2>Transforming Weeknights Into <span>Destination Packed Houses</span></h2>
+      <p>
+        Strategic entertainment programming designed to fill tables, boost bar tabs, and keep patrons engaged from the first drink to last call.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <i class="fa-solid fa-music card-icon"></i>
+        <h3>Real Turntablism</h3>
+        <p>Dual Technics 1200s or Pioneer CDJ-1000 M3 decks delivering seamless beatmatching, harmonic mixing, and instant crowd response.</p>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-calendar-check card-icon"></i>
+        <h3>Consistent Residencies</h3>
+        <p>Reliable recurring entertainment that builds a loyal local crowd on competitive weeknights (Tuesday–Thursday) and weekends.</p>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-bullhorn card-icon"></i>
+        <h3>Interactive Game Nights</h3>
+        <p>Seamlessly pair DJ sets with high-margin interactive bar games to drive extended customer stay times.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== PAGE 6: KARAOKE & MORE ==================== -->
+  <main id="karaoke" class="page-section">
+    <div class="hero">
+      <div class="hero-badge"><i class="fa-solid fa-icons"></i> Interactive Entertainment</div>
+      <h2>Live Console Karaoke, <span>Singo & Pub Trivia</span></h2>
+      <p>
+        Studio-grade vocal audio engineering for singers, paired with crowd-captivating music bingo and trivia nights.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <i class="fa-solid fa-microphone card-icon"></i>
+        <h3>Full-Production Karaoke</h3>
+        <p>No tablet toy setups. Features a dedicated vocal mixing console, studio compression/reverb, monitor wedge, and multiple duet microphones.</p>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-list-ol card-icon"></i>
+        <h3>Singo (Song Bingo)</h3>
+        <p>A fast-paced musical twist on traditional bingo where guests listen to song clips, mark their cards, and compete for bar prizes.</p>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-brain card-icon"></i>
+        <h3>Pub Trivia</h3>
+        <p>Engaging multimedia trivia with charismatic MC hosting, themed rounds, and seamless background scoring that keeps crowds engaged.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== PAGE 7: CUSTOM QUOTE & AVAILABILITY ==================== -->
+  <main id="availability" class="page-section">
+    <div class="hero" style="padding: 2rem 1rem;">
+      <div class="hero-badge"><i class="fa-solid fa-calendar-days"></i> Direct Availability</div>
+      <h2>Plan Your Experience & <span>Lock Your Date</span></h2>
+      <p>Select your event details below to check regional availability and view instant transparent investment estimates.</p>
+    </div>
+
+    <div class="quote-box">
+      <form id="quoteForm" onsubmit="handleQuoteSubmit(event)">
+        
+        <div class="form-group">
+          <label><i class="fa-solid fa-tag"></i> Event Type</label>
+          <select id="eventType" class="form-control" onchange="updateEstimatedPrice()">
+            <option value="wedding_combo">Wedding (Ceremony & Reception)</option>
+            <option value="wedding_reception">Wedding (Reception Only)</option>
+            <option value="wedding_ceremony">Wedding (Ceremony Only)</option>
+            <option value="corporate">Corporate Event / Gala / Awards Banquet</option>
+            <option value="resort">Beach Resort / Hotel Lounge Entertainment</option>
+            <option value="bar_residency">Bar & Grill / Nightclub Residency</option>
+            <option value="private_party">Private Party (Birthday, Anniversary, Milestone)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-map-location-dot"></i> Southwest Florida City</label>
+          <select id="swflCity" class="form-control" onchange="updateEstimatedPrice()">
+            <option value="Fort Myers">Fort Myers</option>
+            <option value="Cape Coral">Cape Coral</option>
+            <option value="Naples">Naples</option>
+            <option value="Sanibel Island">Sanibel Island</option>
+            <option value="Captiva Island">Captiva Island</option>
+            <option value="Bonita Springs">Bonita Springs</option>
+            <option value="Estero">Estero</option>
+            <option value="Fort Myers Beach">Fort Myers Beach</option>
+            <option value="Other">Other Lee / Collier Location</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-location-dot"></i> Venue Name or Address</label>
+          <input type="text" id="venueInput" class="form-control" placeholder="Start typing venue name or street address..." oninput="autocompleteVenue(this.value)" autocomplete="off" />
+          <div id="autocompleteList" class="autocomplete-items" style="display:none;"></div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-regular fa-calendar"></i> Requested Event Date</label>
+          <input type="date" id="eventDate" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-sliders"></i> Production Add-Ons & Enhancements</label>
+          <div class="addons-grid">
+            <label class="addon-item">
+              <input type="checkbox" id="addonTurntables" onchange="updateEstimatedPrice()" />
+              <span class="addon-label">Technics 1200 / CDJ Setup</span>
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" id="addonLighting" onchange="updateEstimatedPrice()" />
+              <span class="addon-label">Professional Lighting</span>
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" id="addonKaraoke" onchange="updateEstimatedPrice()" />
+              <span class="addon-label">Live Console Karaoke</span>
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" id="addonSingo" onchange="updateEstimatedPrice()" />
+              <span class="addon-label">Singo / Pub Trivia</span>
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" id="addonGenerator" onchange="updateEstimatedPrice()" />
+              <span class="addon-label">Ceremony Generator Power</span>
+            </label>
+            <label class="addon-item">
+              <input type="checkbox" id="addonHaze" onchange="updateEstimatedPrice()" />
+              <span class="addon-label">Atmospheric Smoke / Haze</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Price Display -->
+        <div class="price-display">
+          <div style="font-size: 0.85rem; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.25rem;">Estimated Investment Package</div>
+          <div class="price-tag" id="priceDisplay">$XXX</div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Customized to your exact venue parameters, hours & gear configuration</div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button type="submit" class="btn-gold" style="flex: 2;"><i class="fa-solid fa-paper-plane"></i> Request Availability Confirmation</button>
+          <button type="button" class="btn-outline" style="flex: 1;" onclick="openPaymentModal()"><i class="fa-solid fa-lock"></i> Pay Retainer</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- ==================== RETAINER PAYMENT MODAL ==================== -->
+  <div id="paymentModal" class="modal-overlay">
+    <div class="modal-card">
+      <button class="close-modal" onclick="closePaymentModal()">&times;</button>
+      <h3 style="font-family: var(--font-heading); color: var(--gold-light); margin-bottom: 0.5rem;"><i class="fa-solid fa-shield-halved"></i> Lock Your Date Online</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">Submit your retainer deposit via secure digital checkout to confirm your reservation on our Southwest Florida calendar.</p>
+      
+      <form onsubmit="handlePaymentSubmit(event)">
+        <div class="form-group">
+          <label>Client Full Name</label>
+          <input type="text" class="form-control" placeholder="Name on reservation" required />
+        </div>
+        <div class="form-group">
+          <label>Event Date</label>
+          <input type="date" class="form-control" required />
+        </div>
+        <div class="form-group">
+          <label>Payment Method</label>
+          <select class="form-control">
+            <option>Credit / Debit Card (Secure Stripe Checkout)</option>
+            <option>Apple Pay / Google Pay</option>
+            <option>Direct ACH / Zelle Invoice Request</option>
+          </select>
+        </div>
+        <div class="price-display" style="padding: 0.75rem; margin-bottom: 1rem;">
+          <span style="font-size: 0.9rem; color: #fff;">Retainer Deposit Amount: </span>
+          <span style="color: var(--gold-primary); font-weight: 700; font-size: 1.2rem;">$XXX</span>
+        </div>
+        <button type="submit" class="btn-gold" style="width: 100%;">Process Secure Retainer</button>
+      </form>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2026 Coastal Paradise Events. All rights reserved.</p>
+    <div class="brand-text">
+      <h2 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--text-light);">COASTAL PARADISE <span style="color: var(--gold-primary);">EVENTS</span></h2>
+      <p style="color: var(--aqua-primary); font-size: 0.75rem; letter-spacing: 1.5px;">Southwest Florida • (239) XXX-XXXX</p>
+    </div>
+    <div class="footer-links">
+      <a href="#" onclick="showPage('home'); return false;">Home</a>
+      <a href="#" onclick="showPage('weddings'); return false;">Weddings</a>
+      <a href="#" onclick="showPage('corporate'); return false;">Corporate</a>
+      <a href="#" onclick="showPage('resorts'); return false;">Resorts</a>
+      <a href="#" onclick="showPage('bars'); return false;">Bar Residencies</a>
+      <a href="#" onclick="showPage('karaoke'); return false;">Karaoke & More</a>
+      <a href="#" onclick="showPage('availability'); return false;">Custom Quote</a>
+      <a href="#" onclick="openPaymentModal(); return false;">Pay Retainer</a>
+    </div>
+    <p>&copy; 2026 Coastal Paradise Events. All rights reserved. Servicing Fort Myers, Cape Coral, Naples, Sanibel, Captiva, Bonita Springs, and Estero.</p>
   </footer>
 
+  <!-- Scripts -->
+  <script>
+    // Tab Navigation
+    function showPage(pageId) {
+      document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+      
+      const target = document.getElementById(pageId);
+      if (target) {
+        target.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      const activeBtn = Array.from(document.querySelectorAll('.nav-link')).find(btn => 
+        btn.getAttribute('onclick')?.includes(`'${pageId}'`)
+      );
+      if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    // Modal Control
+    function openPaymentModal() {
+      document.getElementById('paymentModal').classList.add('active');
+    }
+    function closePaymentModal() {
+      document.getElementById('paymentModal').classList.remove('active');
+    }
+
+    // Venue Autocomplete
+    const swflVenues = [
+      "Luminary Hotel & Co. (Fort Myers)",
+      "The Heitman House (Fort Myers)",
+      "Burroughs Home & Gardens (Fort Myers)",
+      "The Westin Cape Coral Resort at Marina Village",
+      "Cape Cabaret (Cape Coral)",
+      "Margaritaville Beach Resort (Fort Myers Beach)",
+      "Pink Shell Beach Resort & Marina (Fort Myers Beach)",
+      "Tween Waters Island Resort & Spa (Captiva Island)",
+      "South Seas Island Resort (Captiva Island)",
+      "Sundial Beach Resort & Spa (Sanibel Island)",
+      "Casa Ybel Resort (Sanibel Island)",
+      "Hyatt Regency Coconut Point Resort and Spa (Bonita Springs)",
+      "The Ritz-Carlton, Naples",
+      "Naples Grande Beach Resort",
+      "JW Marriott Marco Island Beach Resort"
+    ];
+
+    function autocompleteVenue(val) {
+      const list = document.getElementById('autocompleteList');
+      list.innerHTML = '';
+      if (!val || val.length < 2) {
+        list.style.display = 'none';
+        return;
+      }
+      const matches = swflVenues.filter(v => v.toLowerCase().includes(val.toLowerCase()));
+      if (matches.length === 0) {
+        list.style.display = 'none';
+        return;
+      }
+      matches.forEach(match => {
+        const item = document.createElement('div');
+        item.textContent = match;
+        item.onclick = function() {
+          document.getElementById('venueInput').value = match;
+          list.style.display = 'none';
+        };
+        list.appendChild(item);
+      });
+      list.style.display = 'block';
+    }
+
+    document.addEventListener('click', function(e) {
+      if (e.target.id !== 'venueInput') {
+        const list = document.getElementById('autocompleteList');
+        if (list) list.style.display = 'none';
+      }
+    });
+
+    // Form Submissions
+    function updateEstimatedPrice() {
+      // Dynamic calculation placeholder maintains $XXX format
+      document.getElementById('priceDisplay').textContent = "$XXX";
+    }
+
+    function handleQuoteSubmit(e) {
+      e.preventDefault();
+      const city = document.getElementById('swflCity').value;
+      const date = document.getElementById('eventDate').value;
+      alert(`Thank you! Your availability request for ${date} in ${city} has been received. We will contact you at your provided details shortly with a tailored $XXX quote.`);
+    }
+
+    function handlePaymentSubmit(e) {
+      e.preventDefault();
+      alert('Secure Retainer Portal initialized. You will be redirected to the encrypted checkout processing screen.');
+      closePaymentModal();
+    }
+  </script>
 </body>
 </html>

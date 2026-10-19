@@ -1,15 +1,26 @@
 :root {
-  --gold-primary: #d4af37;
-  --gold-light: #f3e5ab;
-  --gold-dark: #aa820a;
-  --aqua-primary: #00a896;
-  --aqua-glow: #02c39a;
-  --dark-navy: #06101e;
-  --deep-ocean: #0b1a30;
-  --card-bg: #112240;
-  --card-border: rgba(212, 175, 55, 0.25);
-  --text-light: #f8fafc;
-  --text-muted: #94a3b8;
+  /* ========================================================
+     THE NEW 'DEEP COAST' COHESIVE PALETTE
+     Matches the Exact Jacksonville Jaguars & Luxury Deep Gold 
+     ======================================================== */
+  --gold-primary: #D7A22A;       /* WAS #d4af37 (Rich Golden hour) */
+  --gold-light: #F5E8C7;         /* WAS #f3e5ab (Creamy warm sand) */
+  --gold-dark: #9F792C;          /* WAS #aa820a (Subtle deep bronze) */
+  
+  --aqua-primary: #006778;       /* WAS #00a896 (Luxe Gulf Coast teal) */
+  --aqua-glow: #00828A;          /* WAS #02c39a (Vibrant water glow/highlight) */
+  
+  --dark-navy: #101820;          /* WAS #06101e (Official Jaguars Midnight Black) */
+  --deep-ocean: #090E14;         /* WAS #0b1a30 (A rich, pitch-black deep ocean ground) */
+  --card-bg: #141D26;            /* WAS #112240 (Perfect contrast backplane for the grid) */
+  --card-border: rgba(215, 162, 42, 0.18); /* WAS (212, 175, 55, 0.25) (Lighter custom gold border) */
+  
+  --text-light: #FFFFFF;         /* WAS #f8fafc (Brilliant white) */
+  --text-muted: #9BA8B6;         /* WAS #94a3b8 (Soft sea mist gray-teal) */
+
+  /* ========================================================
+     KEEPING YOUR FONTS EXACTLY AS THEY ARE
+     ======================================================== */
   --font-heading: 'Playfair Display', serif;
   --font-accent: 'Cinzel Decorative', serif;
   --font-body: 'Montserrat', sans-serif;

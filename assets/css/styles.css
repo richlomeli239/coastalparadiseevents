@@ -1,8 +1,7 @@
 :root {
   /* ========================================================
      ELEVATED SHIELD BRAND PALETTE
-     Directly matched to the new logo vector asset:
-     Gold linework, Deep Sea Teal, and Midnight Shield Ground
+     Sampled directly from vector mark: Gold, Sea Teal, Midnight
      ======================================================== */
   --gold-primary: #D7A22A;       /* Shield Sun & Line Gold */
   --gold-light: #F5E8C7;         /* Warm Sand Highlight */
@@ -11,22 +10,14 @@
   --teal-primary: #007A87;       /* Shield Surf & Palm Teal */
   --teal-glow: #009EAD;          /* High-Contrast Interactive Hover */
 
-  /* Neutral Midnight Canvas - Eliminates container clashes */
-  --midnight-base: #0D161F;      /* Exact Shield Interior Color */
-  --midnight-dark: #070C12;      /* Deepest Ground (Footer, Inputs) */
-  --card-bg: #141F2B;            /* Elevated Cards & Container Backplane */
-  --card-border: rgba(215, 162, 42, 0.24); /* Hairline Gold Border */
-
-  /* Aliases for legacy component support */
-  --dark-navy: var(--midnight-base);
-  --deep-ocean: var(--midnight-dark);
-  --aqua-primary: var(--teal-primary);
-  --aqua-glow: var(--teal-glow);
+  --midnight-base: #0D161F;      /* Main Page Canvas (Matches Shield) */
+  --midnight-dark: #070C12;      /* Deepest Obsidian (Footer, Inputs) */
+  --card-bg: #141F2B;            /* Elevated Cards Surface */
+  --card-border: rgba(215, 162, 42, 0.24); /* Subtle Gold Border */
 
   --text-light: #FFFFFF;         /* Crisp White */
   --text-muted: #9BA8B6;         /* Slate Mist Gray */
 
-  /* Typography */
   --font-heading: 'Playfair Display', serif;
   --font-accent: 'Cinzel Decorative', serif;
   --font-body: 'Montserrat', sans-serif;
@@ -39,6 +30,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-body);
   background-color: var(--midnight-base);
@@ -48,7 +43,7 @@ body {
 }
 
 /* ========================================================
-   HEADER & ELEVATED SHIELD LOGO
+   HEADER & LOGO CROP
    ======================================================== */
 header {
   position: sticky;
@@ -66,43 +61,65 @@ header {
 .brand-container {
   display: inline-flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 1rem;
   text-decoration: none;
   cursor: pointer;
 }
 
-.brand-logo {
-  height: 68px;
+/* Focus strictly on the shield crest on the left of elevated_logo.svg */
+.brand-logo-frame {
+  width: 72px;
+  height: 64px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.brand-logo-frame img {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 90px;
   width: auto;
-  max-width: 140px;
-  display: block;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: left center;
   transition: transform 0.25s ease;
 }
 
-.brand-container:hover .brand-logo {
-  transform: scale(1.03);
+.brand-container:hover .brand-logo-frame img {
+  transform: translateY(-50%) scale(1.04);
 }
 
-.brand-text h1 {
+.brand-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title h1 {
   font-family: var(--font-heading);
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   font-weight: 700;
-  color: var(--text-light);
+  color: #FFFFFF;
   letter-spacing: 0.5px;
-  line-height: 1.2;
+  line-height: 1.1;
+  margin: 0;
 }
 
-.brand-text h1 span {
+.brand-title h1 span {
   color: var(--gold-primary);
 }
 
-.brand-text p {
+.brand-title p {
+  font-family: var(--font-body);
   font-size: 0.72rem;
   color: var(--gold-light);
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: 600;
+  margin-top: 3px;
 }
 
 /* Navigation Tabs */
@@ -124,6 +141,9 @@ nav {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   display: inline-block;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .nav-link:hover, .nav-link.active {
@@ -140,6 +160,8 @@ nav {
   margin-left: 0.5rem;
   border: none;
   cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .nav-btn:hover {
@@ -151,8 +173,7 @@ nav {
    PAGE LAYOUT & SECTIONS
    ======================================================== */
 .page-container {
-  min-height: calc(100vh - 160px);
-  padding: 3rem 2rem;
+  padding: 4rem 2rem 2rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -312,31 +333,13 @@ nav {
   margin-bottom: 1.2rem;
 }
 
-.card ul {
-  list-style: none;
-}
-
-.card ul li {
-  font-size: 0.85rem;
-  color: var(--text-light);
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.card ul li i {
-  color: var(--gold-primary);
-  font-size: 0.8rem;
-}
-
 /* Pedigree Ribbon */
 .heritage-ribbon {
   background: linear-gradient(135deg, var(--midnight-dark), var(--card-bg));
   border: 1px solid var(--gold-primary);
   border-radius: 12px;
   padding: 2.5rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -366,6 +369,11 @@ nav {
   letter-spacing: 1px;
 }
 
+.heritage-ribbon > p {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+}
+
 .heritage-badges {
   display: flex;
   flex-wrap: wrap;
@@ -383,6 +391,126 @@ nav {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+}
+
+/* ========================================================
+   QUOTE BOX & FORM CONTROLS
+   ======================================================== */
+.quote-box {
+  background: var(--card-bg);
+  border: 1px solid var(--gold-primary);
+  border-radius: 12px;
+  padding: 2.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gold-light);
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--midnight-base);
+  border: 1px solid rgba(215, 162, 42, 0.35);
+  border-radius: 6px;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--teal-glow);
+  box-shadow: 0 0 8px rgba(0, 158, 173, 0.3);
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid var(--gold-primary);
+  border-top: none;
+  z-index: 99;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--midnight-dark);
+  border-radius: 0 0 6px 6px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.85rem;
+}
+
+.autocomplete-items div:hover {
+  background-color: var(--card-bg);
+  color: var(--gold-primary);
+}
+
+.addons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.addon-item {
+  background: rgba(7, 12, 18, 0.7);
+  border: 1px solid rgba(215, 162, 42, 0.25);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.addon-item input[type="checkbox"] {
+  accent-color: var(--gold-primary);
+  width: 18px;
+  height: 18px;
+}
+
+.addon-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.price-display {
+  background: var(--midnight-dark);
+  border: 1px dashed var(--gold-primary);
+  padding: 1.25rem;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.price-tag {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  color: var(--gold-primary);
+  font-weight: 700;
+}
+
+.price-val {
+  color: var(--gold-primary);
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 
 /* ========================================================
@@ -425,41 +553,16 @@ nav {
   border: none;
 }
 
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-  font-weight: 600;
+.modal-card h3 {
+  font-family: var(--font-heading);
   color: var(--gold-light);
+  margin-bottom: 0.5rem;
 }
 
-.form-control {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  background: var(--midnight-base);
-  border: 1px solid rgba(215, 162, 42, 0.35);
-  border-radius: 6px;
-  color: #fff;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-}
-
-.form-control:focus {
-  outline: none;
-  border-color: var(--teal-glow);
-  box-shadow: 0 0 8px rgba(0, 158, 173, 0.3);
-}
-
-.price-display {
-  background: var(--midnight-dark);
-  border: 1px dashed var(--gold-primary);
-  padding: 1.25rem;
-  border-radius: 8px;
-  text-align: center;
+.modal-card > p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
 }
 
 /* ========================================================
@@ -472,6 +575,7 @@ footer {
   text-align: center;
   font-size: 0.85rem;
   color: var(--text-muted);
+  margin-top: 4rem;
 }
 
 .footer-brand-wrap {
@@ -481,20 +585,12 @@ footer {
   margin-bottom: 1.5rem;
 }
 
-.footer-logo {
-  height: 52px;
-  width: auto;
-  max-width: 120px;
-  display: block;
-  object-fit: contain;
-}
-
 .footer-locations {
   color: var(--text-muted);
   font-size: 0.8rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-top: 0.6rem;
+  margin-top: 0.75rem;
 }
 
 .footer-phone {
@@ -529,7 +625,7 @@ footer {
 }
 
 /* ========================================================
-   RESPONSIVE BREAKPOINTS
+   RESPONSIVE
    ======================================================== */
 @media (max-width: 992px) {
   header {
@@ -547,10 +643,14 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .brand-logo {
+  .brand-logo-frame {
+    width: 60px;
     height: 52px;
   }
-  .brand-text h1 {
-    font-size: 1.1rem;
+  .brand-logo-frame img {
+    height: 74px;
+  }
+  .brand-title h1 {
+    font-size: 1.15rem;
   }
 }

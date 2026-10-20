@@ -1,29 +1,29 @@
 :root {
   /* ========================================================
-     ELEVATED SHIELD BRAND PALETTE
-     Sampled directly from vector mark: Gold, Sea Teal, Midnight
+     EXACT PALETTE SAMPLED FROM APPROVED LOGO (logo.jpg)
      ======================================================== */
-  --gold-primary: #D7A22A;       /* Shield Sun & Line Gold */
-  --gold-light: #F5E8C7;         /* Warm Sand Highlight */
-  --gold-dark: #9F792C;          /* Deep Bronze / Accent Gold */
+  --logo-bg: #171F26;            /* Exact background hex of logo.jpg */
+  --midnight-base: #11181F;      /* Main Page Body Background */
+  --midnight-dark: #0B1015;      /* Deepest Ground (Inputs & Sub-footer) */
+  --card-bg: #1A242D;            /* Elevated Card Surface */
+  
+  --gold-primary: #D5A853;       /* Warm Metallic Gold from "PARADISE" */
+  --gold-light: #E8C983;         /* Soft Champagne Gold Highlight */
+  --gold-dark: #A67C2E;          /* Deep Burnished Gold */
+  
+  --teal-primary: #5A9CA4;       /* Coastal Seafoam Teal from Shield */
+  --teal-glow: #74BDC6;          /* Brighter Teal for Icons & Hover */
+  
+  --card-border: rgba(213, 168, 83, 0.25);
+  --text-light: #FFFFFF;
+  --text-muted: #A9B6C2;
 
-  --teal-primary: #007A87;       /* Shield Surf & Palm Teal */
-  --teal-glow: #009EAD;          /* High-Contrast Interactive Hover */
-
-  --midnight-base: #0D161F;      /* Main Page Canvas (Matches Shield) */
-  --midnight-dark: #070C12;      /* Deepest Obsidian (Footer, Inputs) */
-  --card-bg: #141F2B;            /* Elevated Cards Surface */
-  --card-border: rgba(215, 162, 42, 0.24); /* Subtle Gold Border */
-
-  --text-light: #FFFFFF;         /* Crisp White */
-  --text-muted: #9BA8B6;         /* Slate Mist Gray */
-
-  --font-heading: 'Playfair Display', serif;
-  --font-accent: 'Cinzel Decorative', serif;
+  /* Geometric Sans-Serif matching the approved logo */
+  --font-brand: 'Montserrat', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
   --font-body: 'Montserrat', sans-serif;
 }
 
-/* Universal Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -38,130 +38,92 @@ body {
   font-family: var(--font-body);
   background-color: var(--midnight-base);
   color: var(--text-light);
-  line-height: 1.6;
+  line-height: 1.65;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* ========================================================
-   HEADER & LOGO CROP
+   HEADER & SEAMLESS APPROVED LOGO INTEGRATION
    ======================================================== */
 header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(13, 22, 31, 0.96);
-  backdrop-filter: blur(12px);
+  background-color: var(--logo-bg);
   border-bottom: 1px solid var(--card-border);
-  padding: 0.6rem 2rem;
+  padding: 0.5rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .brand-container {
-  display: inline-flex;
-  align-items: center;
-  gap: 1rem;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* Focus strictly on the shield crest on the left of elevated_logo.svg */
-.brand-logo-frame {
-  width: 72px;
-  height: 64px;
-  overflow: hidden;
-  position: relative;
   display: flex;
   align-items: center;
+  text-decoration: none;
+  background-color: var(--logo-bg);
+  overflow: hidden;
+  height: 76px;
+  width: 280px;
   flex-shrink: 0;
 }
 
-.brand-logo-frame img {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 90px;
-  width: auto;
+/* Crops the square 1:1 logo.jpg into a horizontal header banner */
+.brand-logo-img {
+  width: 100%;
+  height: 165%;
   object-fit: cover;
-  object-position: left center;
+  object-position: center 50%;
+  display: block;
   transition: transform 0.25s ease;
 }
 
-.brand-container:hover .brand-logo-frame img {
-  transform: translateY(-50%) scale(1.04);
+.brand-container:hover .brand-logo-img {
+  transform: scale(1.03);
 }
 
-.brand-title {
-  display: flex;
-  flex-direction: column;
-}
-
-.brand-title h1 {
-  font-family: var(--font-heading);
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: #FFFFFF;
-  letter-spacing: 0.5px;
-  line-height: 1.1;
-  margin: 0;
-}
-
-.brand-title h1 span {
-  color: var(--gold-primary);
-}
-
-.brand-title p {
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  color: var(--gold-light);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 600;
-  margin-top: 3px;
-}
-
-/* Navigation Tabs */
+/* Navigation */
 nav {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
+  flex-wrap: wrap;
 }
 
 .nav-link {
   text-decoration: none;
   color: var(--text-light);
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 500;
-  padding: 0.5rem 0.8rem;
-  border-radius: 4px;
-  transition: all 0.3s ease;
+  font-family: var(--font-brand);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.55rem 0.85rem;
+  border-radius: 6px;
+  transition: all 0.25s ease;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
   display: inline-block;
   background: none;
   border: none;
   cursor: pointer;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover,
+.nav-link.active {
   color: var(--gold-primary);
-  background: rgba(215, 162, 42, 0.12);
+  background: rgba(213, 168, 83, 0.12);
 }
 
 .nav-btn {
   background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-  color: var(--midnight-base) !important;
+  color: var(--midnight-dark) !important;
   font-weight: 700;
-  padding: 0.5rem 1.1rem;
-  border-radius: 20px;
-  margin-left: 0.5rem;
-  border: none;
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  padding: 0.55rem 1.15rem;
+  border-radius: 25px;
+  margin-left: 0.4rem;
 }
 
 .nav-btn:hover {
@@ -170,50 +132,55 @@ nav {
 }
 
 /* ========================================================
-   PAGE LAYOUT & SECTIONS
+   MAIN LAYOUT & HERO
    ======================================================== */
 .page-container {
-  padding: 4rem 2rem 2rem 2rem;
+  flex: 1;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 3rem 2rem;
 }
 
-/* Hero Section */
 .hero {
   text-align: center;
-  padding: 3.5rem 1.5rem;
-  background: radial-gradient(circle at center, rgba(0, 122, 135, 0.22) 0%, transparent 72%);
-  border-radius: 12px;
-  margin-bottom: 3rem;
+  padding: 4rem 2rem;
+  background: radial-gradient(circle at center, rgba(90, 156, 164, 0.18) 0%, rgba(26, 36, 45, 0.6) 75%);
+  border-radius: 14px;
+  margin-bottom: 3.5rem;
   border: 1px solid var(--card-border);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
 }
 
 .hero-badge {
   display: inline-block;
-  padding: 0.35rem 1.2rem;
-  border-radius: 20px;
-  background: rgba(215, 162, 42, 0.12);
+  padding: 0.4rem 1.25rem;
+  border-radius: 25px;
+  background: rgba(213, 168, 83, 0.14);
   border: 1px solid var(--gold-primary);
   color: var(--gold-light);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
+.hero h1,
 .hero h2 {
   font-family: var(--font-heading);
-  font-size: 2.6rem;
-  line-height: 1.25;
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.2;
   margin-bottom: 1.25rem;
   color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
+.hero h1 span,
 .hero h2 span {
-  background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--gold-primary);
 }
 
 .hero p {
@@ -221,6 +188,7 @@ nav {
   margin: 0 auto 2rem;
   font-size: 1.05rem;
   color: var(--text-muted);
+  font-weight: 400;
 }
 
 .hero-btns {
@@ -232,64 +200,70 @@ nav {
 
 .btn-gold {
   background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
-  color: var(--midnight-base);
+  color: var(--midnight-dark);
   border: none;
-  padding: 0.85rem 2rem;
-  font-size: 0.95rem;
+  padding: 0.9rem 2.1rem;
+  font-size: 0.9rem;
   font-weight: 700;
   border-radius: 30px;
   cursor: pointer;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   text-decoration: none;
   display: inline-block;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .btn-gold:hover {
   background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(215, 162, 42, 0.3);
+  box-shadow: 0 8px 20px rgba(213, 168, 83, 0.3);
 }
 
 .btn-outline {
   background: transparent;
-  border: 1px solid var(--teal-primary);
+  border: 1.5px solid var(--teal-primary);
   color: var(--teal-glow);
-  padding: 0.85rem 2rem;
-  font-size: 0.95rem;
-  font-weight: 600;
+  padding: 0.9rem 2.1rem;
+  font-size: 0.9rem;
+  font-weight: 700;
   border-radius: 30px;
   cursor: pointer;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   text-decoration: none;
   display: inline-block;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .btn-outline:hover {
-  background: rgba(0, 122, 135, 0.18);
+  background: rgba(90, 156, 164, 0.15);
   border-color: var(--teal-glow);
   transform: translateY(-2px);
 }
 
-/* Grids & Cards */
+/* ========================================================
+   SECTIONS, GRIDS & CARDS
+   ======================================================== */
 .section-title {
   font-family: var(--font-heading);
-  font-size: 2rem;
+  font-size: 1.9rem;
+  font-weight: 800;
   text-align: center;
   margin-bottom: 0.5rem;
-  color: var(--gold-light);
+  color: var(--gold-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .section-subtitle {
   text-align: center;
   color: var(--text-muted);
   margin-bottom: 2.5rem;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  font-weight: 600;
 }
 
 .grid-3 {
@@ -303,15 +277,15 @@ nav {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: 12px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  padding: 2.2rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .card:hover {
   transform: translateY(-4px);
   border-color: var(--gold-primary);
-  box-shadow: 0 12px 30px rgba(0, 122, 135, 0.2);
+  box-shadow: 0 12px 28px rgba(90, 156, 164, 0.18);
 }
 
 .card-icon {
@@ -322,27 +296,51 @@ nav {
 
 .card h3 {
   font-family: var(--font-heading);
-  font-size: 1.35rem;
+  font-size: 1.25rem;
+  font-weight: 700;
   margin-bottom: 0.85rem;
   color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .card p {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   color: var(--text-muted);
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.25rem;
 }
 
-/* Pedigree Ribbon */
+.card ul {
+  list-style: none;
+}
+
+.card ul li {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  margin-bottom: 0.55rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.card ul li i {
+  color: var(--gold-primary);
+  font-size: 0.85rem;
+}
+
+/* ========================================================
+   PEDIGREE & CALLOUT RIBBON
+   ======================================================== */
 .heritage-ribbon {
-  background: linear-gradient(135deg, var(--midnight-dark), var(--card-bg));
+  background: linear-gradient(135deg, var(--logo-bg), var(--card-bg));
   border: 1px solid var(--gold-primary);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 2.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
 }
 
 .heritage-header {
@@ -352,26 +350,30 @@ nav {
 }
 
 .heritage-header i {
-  font-size: 2.5rem;
+  font-size: 2.6rem;
   color: var(--gold-primary);
 }
 
 .heritage-header h3 {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  font-weight: 700;
   color: var(--gold-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .heritage-header p {
   color: var(--teal-glow);
   font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
+  font-weight: 600;
 }
 
 .heritage-ribbon > p {
   font-size: 0.95rem;
-  color: #cbd5e1;
+  color: var(--text-muted);
 }
 
 .heritage-badges {
@@ -382,28 +384,33 @@ nav {
 }
 
 .badge-pill {
-  background: rgba(13, 22, 31, 0.85);
-  border: 1px solid rgba(215, 162, 42, 0.4);
-  padding: 0.4rem 0.9rem;
-  border-radius: 20px;
+  background: var(--midnight-base);
+  border: 1px solid rgba(213, 168, 83, 0.45);
+  padding: 0.45rem 1rem;
+  border-radius: 25px;
   font-size: 0.8rem;
-  color: #f1f5f9;
+  font-weight: 600;
+  color: var(--text-light);
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
+}
+
+.badge-pill i {
+  color: var(--gold-primary);
 }
 
 /* ========================================================
-   QUOTE BOX & FORM CONTROLS
+   QUOTE FORM & INTERACTIVE CALCULATOR
    ======================================================== */
 .quote-box {
   background: var(--card-bg);
   border: 1px solid var(--gold-primary);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 2.5rem;
-  max-width: 800px;
-  margin: 0 auto;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  max-width: 820px;
+  margin: 0 auto 3rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
 }
 
 .form-group {
@@ -414,16 +421,18 @@ nav {
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.88rem;
+  font-weight: 700;
   color: var(--gold-light);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
 }
 
 .form-control {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.8rem 1rem;
   background: var(--midnight-base);
-  border: 1px solid rgba(215, 162, 42, 0.35);
+  border: 1px solid rgba(213, 168, 83, 0.35);
   border-radius: 6px;
   color: #fff;
   font-family: var(--font-body);
@@ -433,7 +442,7 @@ nav {
 .form-control:focus {
   outline: none;
   border-color: var(--teal-glow);
-  box-shadow: 0 0 8px rgba(0, 158, 173, 0.3);
+  box-shadow: 0 0 8px rgba(116, 189, 198, 0.35);
 }
 
 .autocomplete-items {
@@ -451,10 +460,10 @@ nav {
 }
 
 .autocomplete-items div {
-  padding: 10px;
+  padding: 10px 14px;
   cursor: pointer;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  font-size: 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.88rem;
 }
 
 .autocomplete-items div:hover {
@@ -464,20 +473,25 @@ nav {
 
 .addons-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1rem;
-  margin: 1.5rem 0;
+  margin: 1rem 0 1.5rem;
 }
 
 .addon-item {
-  background: rgba(7, 12, 18, 0.7);
-  border: 1px solid rgba(215, 162, 42, 0.25);
+  background: var(--midnight-base);
+  border: 1px solid rgba(213, 168, 83, 0.25);
   border-radius: 8px;
-  padding: 0.75rem 1rem;
+  padding: 0.8rem 1rem;
   display: flex;
   align-items: center;
   gap: 0.75rem;
   cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.addon-item:hover {
+  border-color: var(--gold-primary);
 }
 
 .addon-item input[type="checkbox"] {
@@ -487,14 +501,14 @@ nav {
 }
 
 .addon-label {
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: 0.86rem;
+  font-weight: 600;
 }
 
 .price-display {
   background: var(--midnight-dark);
   border: 1px dashed var(--gold-primary);
-  padding: 1.25rem;
+  padding: 1.5rem;
   border-radius: 8px;
   text-align: center;
   margin-bottom: 1.5rem;
@@ -504,17 +518,17 @@ nav {
   font-family: var(--font-heading);
   font-size: 2.2rem;
   color: var(--gold-primary);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .price-val {
   color: var(--gold-primary);
-  font-weight: 700;
-  font-size: 1.2rem;
+  font-weight: 800;
+  font-size: 1.25rem;
 }
 
 /* ========================================================
-   MODAL
+   PAYMENT MODAL
    ======================================================== */
 .modal-overlay {
   display: none;
@@ -534,19 +548,19 @@ nav {
 .modal-card {
   background: var(--card-bg);
   border: 1px solid var(--gold-primary);
-  border-radius: 12px;
+  border-radius: 14px;
   max-width: 500px;
-  width: 90%;
-  padding: 2rem;
+  width: 92%;
+  padding: 2.2rem;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
 }
 
 .close-modal {
   position: absolute;
   top: 1rem;
-  right: 1.2rem;
-  font-size: 1.5rem;
+  right: 1.25rem;
+  font-size: 1.6rem;
   color: var(--text-muted);
   cursor: pointer;
   background: none;
@@ -557,10 +571,12 @@ nav {
   font-family: var(--font-heading);
   color: var(--gold-light);
   margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-size: 1.25rem;
 }
 
 .modal-card > p {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: var(--text-muted);
   margin-bottom: 1.5rem;
 }
@@ -569,13 +585,13 @@ nav {
    FOOTER
    ======================================================== */
 footer {
-  background: var(--midnight-dark);
+  background: var(--logo-bg);
   border-top: 1px solid var(--card-border);
-  padding: 2.5rem 2rem 1.5rem;
+  padding: 2.5rem 2rem 1.75rem;
   text-align: center;
   font-size: 0.85rem;
   color: var(--text-muted);
-  margin-top: 4rem;
+  margin-top: auto;
 }
 
 .footer-brand-wrap {
@@ -585,19 +601,36 @@ footer {
   margin-bottom: 1.5rem;
 }
 
+.footer-logo-container {
+  display: block;
+  overflow: hidden;
+  height: 70px;
+  width: 260px;
+  margin: 0 auto 0.75rem;
+}
+
+.footer-logo-img {
+  width: 100%;
+  height: 165%;
+  object-fit: cover;
+  object-position: center 50%;
+  display: block;
+}
+
 .footer-locations {
   color: var(--text-muted);
   font-size: 0.8rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-top: 0.75rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
 }
 
 .footer-phone {
-  color: var(--gold-light);
-  font-weight: 600;
-  font-size: 0.95rem;
-  margin-top: 0.35rem;
+  color: var(--gold-primary);
+  font-weight: 700;
+  font-size: 1rem;
+  margin-top: 0.4rem;
 }
 
 .footer-links {
@@ -609,8 +642,12 @@ footer {
 }
 
 .footer-links a {
-  color: var(--text-muted);
+  color: var(--text-light);
   text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.8px;
   transition: color 0.2s;
 }
 
@@ -620,37 +657,38 @@ footer {
 
 .footer-copy {
   color: var(--text-muted);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   margin-top: 1rem;
 }
 
 /* ========================================================
-   RESPONSIVE
+   RESPONSIVE BREAKPOINTS
    ======================================================== */
 @media (max-width: 992px) {
   header {
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.75rem;
     padding: 0.75rem 1rem;
   }
   nav {
-    flex-wrap: wrap;
     justify-content: center;
   }
+  .hero h1,
   .hero h2 {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
 }
 
-@media (max-width: 768px) {
-  .brand-logo-frame {
-    width: 60px;
-    height: 52px;
+@media (max-width: 600px) {
+  .brand-container {
+    width: 240px;
+    height: 64px;
   }
-  .brand-logo-frame img {
-    height: 74px;
+  .page-container {
+    padding: 2rem 1.25rem;
   }
-  .brand-title h1 {
-    font-size: 1.15rem;
+  .heritage-header {
+    flex-direction: column;
+    text-align: center;
   }
 }

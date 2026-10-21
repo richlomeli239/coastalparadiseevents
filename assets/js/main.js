@@ -1,6 +1,57 @@
 // Coastal Paradise Events - Global Interactions & Form Operations
 // Official Contact: (239) 318-0510 | richlomeli239@gmail.com | Fort Myers, FL 33919
 
+// Mobile Navigation Hamburger Control
+function toggleMobileNav() {
+  const toggleBtn = document.getElementById('mobileNavToggle');
+  const mainNav = document.getElementById('mainNav');
+  if (toggleBtn && mainNav) {
+    const isActive = mainNav.classList.toggle('active');
+    toggleBtn.classList.toggle('active', isActive);
+    toggleBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+  }
+}
+
+function closeMobileNav() {
+  const toggleBtn = document.getElementById('mobileNavToggle');
+  const mainNav = document.getElementById('mainNav');
+  if (toggleBtn && mainNav) {
+    mainNav.classList.remove('active');
+    toggleBtn.classList.remove('active');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const toggleBtn = document.getElementById('mobileNavToggle');
+  const mainNav = document.getElementById('mainNav');
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleMobileNav();
+    });
+  }
+
+  // Close mobile nav when clicking outside
+  document.addEventListener('click', function(e) {
+    if (mainNav && mainNav.classList.contains('active')) {
+      if (!mainNav.contains(e.target) && e.target !== toggleBtn && !toggleBtn.contains(e.target)) {
+        closeMobileNav();
+      }
+    }
+  });
+
+  // Close mobile nav when a nav-link is clicked
+  if (mainNav) {
+    mainNav.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function() {
+        closeMobileNav();
+      });
+    });
+  }
+});
+
 // Retainer Payment Modal Control
 function openPaymentModal() {
   const modal = document.getElementById('paymentModal');

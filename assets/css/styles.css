@@ -822,6 +822,55 @@ footer {
   margin-top: 1rem;
 }
 
+/* Mobile Navigation Hamburger Button */
+.mobile-nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 38px;
+  height: 38px;
+  background: rgba(213, 168, 83, 0.1);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 8px 7px;
+  z-index: 1002;
+  transition: all 0.25s ease;
+}
+
+.mobile-nav-toggle:hover {
+  background: rgba(213, 168, 83, 0.2);
+  border-color: var(--gold-primary);
+}
+
+.hamburger-bar {
+  display: block;
+  width: 100%;
+  height: 2.5px;
+  background-color: var(--gold-primary);
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.mobile-nav-toggle.active {
+  background: rgba(213, 168, 83, 0.25);
+  border-color: var(--gold-primary);
+}
+
+.mobile-nav-toggle.active .hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-nav-toggle.active .hamburger-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.mobile-nav-toggle.active .hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 /* ========================================================
    RESPONSIVE BREAKPOINTS
    ======================================================== */
@@ -838,13 +887,68 @@ footer {
 
 @media (max-width: 992px) {
   header {
+    padding: 0.6rem 1.25rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .mobile-nav-toggle {
+    display: flex;
+  }
+
+  nav#mainNav {
+    position: fixed;
+    top: 76px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: rgba(17, 24, 31, 0.98);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 2px solid var(--card-border);
     flex-direction: column;
-    gap: 0.75rem;
-    padding: 0.75rem 1rem;
+    align-items: stretch;
+    padding: 1.5rem 1.5rem 2rem;
+    gap: 0.5rem;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85);
+    transform: translateY(-120%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.25s;
+    max-height: calc(100vh - 76px);
+    overflow-y: auto;
+    z-index: 999;
   }
-  nav {
-    justify-content: center;
+
+  nav#mainNav.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
   }
+
+  nav#mainNav .nav-link {
+    width: 100%;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid transparent;
+  }
+
+  nav#mainNav .nav-link:hover,
+  nav#mainNav .nav-link.active {
+    background: rgba(213, 168, 83, 0.15);
+    border-color: rgba(213, 168, 83, 0.3);
+  }
+
+  nav#mainNav .nav-btn {
+    margin-top: 0.75rem;
+    margin-left: 0;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
   .hero h1,
   .hero h2 {
     font-size: 1.9rem;
@@ -852,13 +956,20 @@ footer {
 }
 
 @media (max-width: 600px) {
+  header {
+    padding: 0.5rem 1rem;
+  }
+  nav#mainNav {
+    top: 64px;
+    max-height: calc(100vh - 64px);
+  }
   .brand-container {
     width: auto;
-    max-width: 220px;
-    height: 60px;
+    max-width: 200px;
+    height: 56px;
   }
   .brand-logo-img {
-    max-height: 54px;
+    max-height: 50px;
   }
   .footer-logo-container {
     height: 64px;
@@ -873,9 +984,5 @@ footer {
   .heritage-header {
     flex-direction: column;
     text-align: center;
-  }
-  .nav-link {
-    font-size: 0.74rem;
-    padding: 0.4rem 0.55rem;
   }
 }

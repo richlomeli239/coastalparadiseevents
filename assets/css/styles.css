@@ -65,19 +65,21 @@ header {
   display: flex;
   align-items: center;
   text-decoration: none;
-  background-color: var(--logo-bg);
-  overflow: hidden;
+  background-color: transparent;
   height: 76px;
-  width: 280px;
+  width: auto;
+  max-width: 280px;
   flex-shrink: 0;
+  padding: 2px 0;
 }
 
-/* Crops the square 1:1 logo.jpg into a horizontal header banner */
+/* Displays the complete logo in full view (top to bottom) preserving aspect ratio */
 .brand-logo-img {
-  width: 100%;
-  height: 165%;
-  object-fit: cover;
-  object-position: center 50%;
+  height: 100%;
+  max-height: 72px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
   display: block;
   transition: transform 0.25s ease;
 }
@@ -602,19 +604,29 @@ footer {
 }
 
 .footer-logo-container {
-  display: block;
-  overflow: hidden;
-  height: 70px;
-  width: 260px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  width: auto;
+  max-width: 260px;
   margin: 0 auto 0.75rem;
+  padding: 2px 0;
 }
 
+/* Displays complete footer logo in full view top-to-bottom */
 .footer-logo-img {
-  width: 100%;
-  height: 165%;
-  object-fit: cover;
-  object-position: center 50%;
+  height: 100%;
+  max-height: 74px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
   display: block;
+  transition: transform 0.25s ease;
+}
+
+.footer-logo-container:hover .footer-logo-img {
+  transform: scale(1.03);
 }
 
 .footer-locations {
@@ -627,10 +639,159 @@ footer {
 }
 
 .footer-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   color: var(--gold-primary);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.15rem;
+  margin-top: 0.6rem;
+  text-decoration: none;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.footer-phone:hover {
+  color: var(--gold-light);
+  transform: scale(1.02);
+}
+
+.footer-phone-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
   margin-top: 0.4rem;
+}
+
+.footer-badge-call, .footer-badge-text {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.footer-badge-call {
+  background: rgba(213, 168, 83, 0.15);
+  color: var(--gold-light);
+  border: 1px solid var(--gold-primary);
+}
+
+.footer-badge-call:hover {
+  background: var(--gold-primary);
+  color: var(--midnight-dark);
+}
+
+.footer-badge-text {
+  background: rgba(90, 156, 164, 0.2);
+  color: var(--teal-glow);
+  border: 1px solid var(--teal-primary);
+}
+
+.footer-badge-text:hover {
+  background: var(--teal-primary);
+  color: #ffffff;
+}
+
+.sms-disclaimer {
+  max-width: 720px;
+  margin: 0.85rem auto 0;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: #7d8d9c;
+  text-align: center;
+}
+
+/* Retainer Modal Options */
+.payment-option-card {
+  background: rgba(26, 36, 45, 0.85);
+  border: 1px solid rgba(213, 168, 83, 0.25);
+  border-radius: 10px;
+  padding: 1.1rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  transition: border-color 0.2s ease;
+}
+
+.payment-option-card:hover {
+  border-color: var(--gold-primary);
+}
+
+.payment-option-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+
+.payment-option-title {
+  font-weight: 700;
+  color: var(--gold-light);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.payment-option-badge {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  background: rgba(213, 168, 83, 0.2);
+  color: var(--gold-primary);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.payment-option-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.payment-info-box {
+  background: var(--midnight-dark);
+  border: 1px dashed var(--gold-primary);
+  border-radius: 6px;
+  padding: 0.65rem 0.85rem;
+  margin-top: 0.6rem;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: var(--gold-light);
+  word-break: break-all;
+}
+
+/* Quote Form Enhancements */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.quote-success-box {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background: rgba(26, 36, 45, 0.9);
+  border: 1px solid var(--gold-primary);
+  border-radius: 12px;
+}
+
+.quote-success-icon {
+  font-size: 3rem;
+  color: var(--gold-primary);
+  margin-bottom: 1rem;
 }
 
 .footer-links {
@@ -664,6 +825,17 @@ footer {
 /* ========================================================
    RESPONSIVE BREAKPOINTS
    ======================================================== */
+@media (max-width: 1100px) {
+  header {
+    padding: 0.6rem 1.25rem;
+  }
+  .nav-link {
+    font-size: 0.78rem;
+    padding: 0.45rem 0.65rem;
+    letter-spacing: 0.5px;
+  }
+}
+
 @media (max-width: 992px) {
   header {
     flex-direction: column;
@@ -681,8 +853,19 @@ footer {
 
 @media (max-width: 600px) {
   .brand-container {
-    width: 240px;
+    width: auto;
+    max-width: 220px;
+    height: 60px;
+  }
+  .brand-logo-img {
+    max-height: 54px;
+  }
+  .footer-logo-container {
     height: 64px;
+    max-width: 220px;
+  }
+  .footer-logo-img {
+    max-height: 58px;
   }
   .page-container {
     padding: 2rem 1.25rem;
@@ -690,5 +873,9 @@ footer {
   .heritage-header {
     flex-direction: column;
     text-align: center;
+  }
+  .nav-link {
+    font-size: 0.74rem;
+    padding: 0.4rem 0.55rem;
   }
 }

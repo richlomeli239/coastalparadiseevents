@@ -3,9 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex, nofollow" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <title>Check Availability & Custom Quote | Coastal Paradise Events | SWFL</title>
   <meta name="description" content="Check availability and request a custom entertainment quote for weddings, corporate galas, resorts, and private parties across Southwest Florida." />
+  <link rel="canonical" href="https://coastalparadiseevents.com/quote.html" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://coastalparadiseevents.com/quote.html" />
+  <meta property="og:title" content="Check Availability & Custom Quote | Coastal Paradise Events | SWFL" />
+  <meta property="og:description" content="Check availability and request a custom entertainment quote for weddings, corporate galas, and resorts across Southwest Florida." />
+  <meta property="og:image" content="https://coastalparadiseevents.com/assets/images/logo.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://coastalparadiseevents.com/quote.html" />
+  <meta name="twitter:title" content="Check Availability & Custom Quote | Coastal Paradise Events | SWFL" />
+  <meta name="twitter:description" content="Check availability and request a custom entertainment quote for weddings, corporate galas, and resorts across Southwest Florida." />
+  <meta name="twitter:image" content="https://coastalparadiseevents.com/assets/images/logo.jpg" />
+
+  <!-- Geographic SEO (SWFL / Fort Myers / Naples 33919) -->
+  <meta name="geo.region" content="US-FL" />
+  <meta name="geo.placename" content="Fort Myers, FL 33919" />
+  <meta name="geo.position" content="26.5689;-81.8986" />
+  <meta name="ICBM" content="26.5689, -81.8986" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -20,6 +42,7 @@
     </a>
     <nav id="mainNav">
       <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About Us</a>
       <a href="weddings.html" class="nav-link">Weddings</a>
       <a href="corporate.html" class="nav-link">Corporate</a>
       <a href="resorts.html" class="nav-link">Resorts & Lounges</a>
@@ -34,27 +57,33 @@
     <div class="hero" style="padding: 2.5rem 1.5rem;">
       <div class="hero-badge"><i class="fa-solid fa-calendar-check"></i> Instant Date Checker</div>
       <h1>Configure Your Event & <span>Request a Quote</span></h1>
-      <p>Select your event type, Southwest Florida location, and production add-ons below.</p>
+      <p>Select your event type, Southwest Florida location, and production add-ons below for real-time calendar inquiry.</p>
     </div>
 
     <div class="quote-box">
       <form id="quoteForm" onsubmit="handleQuoteSubmit(event)">
+        <!-- FormSubmit metadata -->
+        <input type="hidden" name="_subject" value="New Event Quote Request - Coastal Paradise Events" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text" name="_honey" style="display:none;" />
+
         <div class="form-group">
-          <label><i class="fa-solid fa-tag"></i> Event Type</label>
-          <select id="eventType" class="form-control" onchange="updateEstimatedPrice()">
-            <option value="Wedding (Ceremony & Reception)">Wedding (Ceremony & Reception)</option>
+          <label for="eventType"><i class="fa-solid fa-tag"></i> Event Type</label>
+          <select id="eventType" name="eventType" class="form-control" onchange="updateEstimatedPrice()">
+            <option value="Wedding (Ceremony &amp; Reception)">Wedding (Ceremony &amp; Reception)</option>
             <option value="Wedding (Reception Only)">Wedding (Reception Only)</option>
             <option value="Wedding (Ceremony Only)">Wedding (Ceremony Only)</option>
             <option value="Corporate Event / Gala">Corporate Event / Gala</option>
             <option value="Resort / Waterfront Lounge">Resort / Waterfront Lounge</option>
-            <option value="Bar & Grill / Nightclub Residency">Bar & Grill / Nightclub Residency</option>
+            <option value="Bar &amp; Grill / Nightclub Residency">Bar &amp; Grill / Nightclub Residency</option>
             <option value="Private Parties (Birthday, Anniversary, etc.)">Private Parties (Birthday, Anniversary, etc.)</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label><i class="fa-solid fa-map-location-dot"></i> Location / City in SWFL</label>
-          <select id="swflCity" class="form-control" onchange="updateEstimatedPrice()">
+          <label for="swflCity"><i class="fa-solid fa-map-location-dot"></i> Location / City in SWFL</label>
+          <select id="swflCity" name="swflCity" class="form-control" onchange="updateEstimatedPrice()">
             <option value="Fort Myers">Fort Myers</option>
             <option value="Fort Myers Beach">Fort Myers Beach</option>
             <option value="Cape Coral">Cape Coral</option>
@@ -63,102 +92,141 @@
             <option value="Bonita Springs">Bonita Springs</option>
             <option value="Estero">Estero</option>
             <option value="Naples">Naples</option>
+            <option value="Marco Island">Marco Island</option>
             <option value="Other Lee/Collier Location">Other Lee/Collier Location</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label><i class="fa-solid fa-location-dot"></i> Venue Name, Business, or Street Address</label>
-          <input type="text" id="venueInput" class="form-control" placeholder="Start typing venue name, address, or custom location..." oninput="autocompleteVenue(this.value)" autocomplete="off" required />
+          <label for="venueInput"><i class="fa-solid fa-location-dot"></i> Venue Name, Business, or Address</label>
+          <input type="text" id="venueInput" name="venueInput" class="form-control" placeholder="Start typing venue name, resort, or custom location..." oninput="autocompleteVenue(this.value)" autocomplete="off" required />
           <div id="autocompleteList" class="autocomplete-items" style="display:none;"></div>
         </div>
 
         <div class="form-group">
-          <label><i class="fa-regular fa-calendar"></i> Event Date</label>
-          <input type="date" id="eventDate" class="form-control" required />
+          <label for="eventDate"><i class="fa-regular fa-calendar"></i> Event Date</label>
+          <input type="date" id="eventDate" name="eventDate" class="form-control" required />
         </div>
 
         <div class="form-group">
-          <label><i class="fa-solid fa-sliders"></i> Production & Entertainment Add-Ons</label>
+          <label><i class="fa-solid fa-sliders"></i> Production &amp; Entertainment Add-Ons</label>
           <div class="addons-grid">
             <label class="addon-item">
-              <input type="checkbox" onchange="updateEstimatedPrice()" />
+              <input type="checkbox" name="addons" value="Full Production Karaoke" onchange="updateEstimatedPrice()" />
               <span class="addon-label">Full Production Karaoke</span>
             </label>
             <label class="addon-item">
-              <input type="checkbox" onchange="updateEstimatedPrice()" />
+              <input type="checkbox" name="addons" value="Singo / Pub Trivia" onchange="updateEstimatedPrice()" />
               <span class="addon-label">Singo / Pub Trivia</span>
             </label>
             <label class="addon-item">
-              <input type="checkbox" onchange="updateEstimatedPrice()" />
+              <input type="checkbox" name="addons" value="Dual Technics 1200 / CDJ-1000 M3" onchange="updateEstimatedPrice()" />
               <span class="addon-label">Dual Technics 1200 / CDJ-1000 M3</span>
             </label>
             <label class="addon-item">
-              <input type="checkbox" onchange="updateEstimatedPrice()" />
+              <input type="checkbox" name="addons" value="Professional Lighting / Uplighting" onchange="updateEstimatedPrice()" />
               <span class="addon-label">Professional Lighting / Uplighting</span>
             </label>
             <label class="addon-item">
-              <input type="checkbox" onchange="updateEstimatedPrice()" />
+              <input type="checkbox" name="addons" value="Photography / Video / Drone" onchange="updateEstimatedPrice()" />
               <span class="addon-label">Photography / Video / Drone</span>
             </label>
             <label class="addon-item">
-              <input type="checkbox" onchange="updateEstimatedPrice()" />
+              <input type="checkbox" name="addons" value="Off-Grid Ceremony Generator" onchange="updateEstimatedPrice()" />
               <span class="addon-label">Off-Grid Ceremony Generator</span>
             </label>
             <label class="addon-item">
-              <input type="checkbox" onchange="updateEstimatedPrice()" />
+              <input type="checkbox" name="addons" value="Atmospheric Smoke / Haze Machine" onchange="updateEstimatedPrice()" />
               <span class="addon-label">Atmospheric Smoke / Haze Machine</span>
             </label>
           </div>
         </div>
 
+        <!-- Optimized Contact Inputs with 10DLC / TCPA SMS Compliance -->
         <div class="form-group">
-          <label><i class="fa-solid fa-user"></i> Your Name & Phone / Email</label>
-          <input type="text" id="clientContact" class="form-control" placeholder="Name, Phone Number & Email Address" required />
+          <label for="clientName"><i class="fa-solid fa-user"></i> Your Full Name</label>
+          <input type="text" id="clientName" name="clientName" class="form-control" placeholder="First &amp; Last Name" required />
         </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="clientEmail"><i class="fa-solid fa-envelope"></i> Email Address</label>
+            <input type="email" id="clientEmail" name="clientEmail" class="form-control" placeholder="name@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="clientPhone"><i class="fa-solid fa-phone"></i> Phone Number (Call or Text)</label>
+            <input type="tel" id="clientPhone" name="clientPhone" class="form-control" placeholder="(239) 000-0000" required />
+          </div>
+        </div>
+        <p class="sms-disclaimer" style="text-align: left; margin-top: -0.25rem; margin-bottom: 1.25rem;">
+          *By providing your phone number, you consent to receive calls and text messages (SMS/MMS) from Coastal Paradise Events regarding your date availability and quote. Message &amp; data rates may apply. Reply STOP to cancel at any time.
+        </p>
 
         <div class="price-display">
           <div style="font-size: 0.82rem; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.25rem; font-weight: 700;">Estimated Investment Range</div>
-          <div class="price-tag" id="priceDisplay">$XXX</div>
-          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.35rem;">Includes commercial audio/lighting overhead, live vocal/turntable mixing labor, and event timeline preparation.</div>
+          <div class="price-tag" id="priceDisplay">$1,495 – $2,495</div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.35rem;">Includes commercial sound/lighting equipment, live mixing craft, and timeline preparation. Final pricing confirmed upon date verification.</div>
         </div>
 
         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          <button type="submit" class="btn-gold" style="flex: 2;"><i class="fa-solid fa-paper-plane"></i> Submit Quote Request</button>
-          <button type="button" class="btn-outline" style="flex: 1;" onclick="openPaymentModal()"><i class="fa-solid fa-lock"></i> Pay Retainer</button>
+          <button type="submit" id="quoteSubmitBtn" class="btn-gold" style="flex: 2;"><i class="fa-solid fa-paper-plane"></i> Submit Quote Request</button>
+          <button type="button" class="btn-outline" style="flex: 1;" onclick="openPaymentModal()"><i class="fa-solid fa-lock"></i> Reserve Date</button>
         </div>
       </form>
     </div>
   </main>
 
+  <!-- Retainer & Date Reservation Modal -->
   <div id="paymentModal" class="modal-overlay">
     <div class="modal-card">
       <button type="button" class="close-modal" onclick="closePaymentModal()">&times;</button>
-      <h3><i class="fa-solid fa-shield-halved"></i> Lock Your Date Online</h3>
-      <p>Submit your retainer deposit via secure digital checkout to confirm your reservation on our Southwest Florida calendar.</p>
-      <form onsubmit="handlePaymentSubmit(event)">
-        <div class="form-group">
-          <label>Client Full Name</label>
-          <input type="text" class="form-control" placeholder="Name on reservation" required />
+      <h3><i class="fa-solid fa-calendar-check"></i> Reserve &amp; Lock Your Date</h3>
+      <p>Coastal Paradise Events accepts direct bank-to-bank transfers via Zelle®, formal digital invoice requests, or direct telephone confirmation.</p>
+
+      <!-- Option 1: Zelle -->
+      <div class="payment-option-card">
+        <div class="payment-option-header">
+          <span class="payment-option-title"><i class="fa-solid fa-bolt" style="color: var(--gold-primary);"></i> Zelle® Direct Transfer</span>
+          <span class="payment-option-badge">Instant • Zero Fees</span>
         </div>
-        <div class="form-group">
-          <label>Event Date</label>
-          <input type="date" class="form-control" required />
+        <p class="payment-option-desc">Send retainer deposit securely from your mobile banking app directly to our business account. Zero processing fees.</p>
+        <div class="payment-info-box">
+          Recipient: <strong>Coastal Paradise Events</strong><br />
+          Zelle Phone: <strong>(239) 318-0510</strong><br />
+          Zelle Email: <strong>richlomeli239@gmail.com</strong>
         </div>
-        <div class="form-group">
-          <label>Payment Method</label>
-          <select class="form-control">
-            <option>Credit / Debit Card (Stripe Checkout)</option>
-            <option>Apple Pay / Google Pay</option>
-            <option>Direct ACH / Zelle Invoice</option>
-          </select>
+      </div>
+
+      <!-- Option 2: Digital Invoice & Contract Request -->
+      <div class="payment-option-card">
+        <div class="payment-option-header">
+          <span class="payment-option-title"><i class="fa-solid fa-file-invoice-dollar" style="color: var(--teal-glow);"></i> Request Retainer Invoice &amp; Contract</span>
+          <span class="payment-option-badge">Digital Agreement</span>
         </div>
-        <div class="price-display">
-          <span>Retainer Deposit Amount: </span>
-          <span class="price-val">$XXX</span>
-        </div>
-        <button type="submit" class="btn-gold" style="width: 100%;">Process Secure Retainer</button>
-      </form>
+        <p class="payment-option-desc">Prefer a written digital contract and formal itemized retainer invoice emailed to you? Submit below:</p>
+        <form onsubmit="handleInvoiceSubmit(event)" style="margin-top: 0.75rem;">
+          <input type="hidden" name="_subject" value="Retainer Invoice &amp; Contract Request" />
+          <div class="form-group" style="margin-bottom: 0.5rem;">
+            <input type="text" name="clientFullName" class="form-control" placeholder="Your Full Name" required />
+          </div>
+          <div class="form-row" style="margin-bottom: 0.5rem;">
+            <input type="email" name="clientInvoiceEmail" class="form-control" placeholder="Email for Invoice" required />
+            <input type="tel" name="clientInvoicePhone" class="form-control" placeholder="Phone (Call/Text)" required />
+          </div>
+          <div class="form-group" style="margin-bottom: 0.75rem;">
+            <input type="date" name="clientEventDate" class="form-control" required />
+          </div>
+          <button type="submit" class="btn-gold" style="width: 100%; padding: 0.55rem;"><i class="fa-solid fa-paper-plane"></i> Email Me Retainer Invoice &amp; Contract</button>
+        </form>
+      </div>
+
+      <!-- Option 3: Phone / Text -->
+      <div style="text-align: center; margin-top: 1rem;">
+        <span style="font-size: 0.82rem; color: var(--text-muted);">Have questions or prefer phone confirmation?</span><br />
+        <a href="tel:+12393180510" style="color: var(--gold-primary); font-weight: 700; font-size: 0.95rem; text-decoration: none;">
+          <i class="fa-solid fa-phone"></i> Call or Text (239) 318-0510
+        </a>
+      </div>
     </div>
   </div>
 
@@ -168,10 +236,20 @@
         <img src="assets/images/logo.jpg" alt="Coastal Paradise Events" class="footer-logo-img" />
       </a>
       <p class="footer-locations">Fort Myers • Cape Coral • Naples • Sanibel • Captiva • Bonita Springs • Estero</p>
-      <p class="footer-phone">(239) XXX-XXXX</p>
+      <a href="tel:+12393180510" class="footer-phone" aria-label="Call or text (239) 318-0510">
+        <i class="fa-solid fa-phone"></i> (239) 318-0510
+      </a>
+      <div class="footer-phone-actions">
+        <a href="tel:+12393180510" class="footer-badge-call"><i class="fa-solid fa-phone"></i> Call</a>
+        <a href="sms:+12393180510" class="footer-badge-text"><i class="fa-solid fa-comment-sms"></i> Text Us</a>
+      </div>
+      <p class="sms-disclaimer">
+        By calling or texting (239) 318-0510, you agree to receive informational calls and text messages (SMS/MMS) from Coastal Paradise Events. Message &amp; data rates may apply. Frequency varies. Reply STOP to cancel or HELP for assistance.
+      </p>
     </div>
     <div class="footer-links">
       <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
       <a href="weddings.html">Weddings</a>
       <a href="corporate.html">Corporate</a>
       <a href="resorts.html">Resorts & Lounges</a>
@@ -179,75 +257,9 @@
       <a href="karaoke.html">Karaoke & More</a>
       <a href="quote.html">Custom Quote</a>
     </div>
-    <p class="footer-copy">&copy; 2026 Coastal Paradise Events. All rights reserved.</p>
+    <p class="footer-copy">&copy; 2026 Coastal Paradise Events. Fort Myers, FL 33919. All rights reserved.</p>
   </footer>
 
-  <script>
-    const swflVenues = [
-      "Luminary Hotel & Co., 2200 Edwards Dr, Fort Myers, FL",
-      "The Heitman House, 2577 First St, Fort Myers, FL",
-      "Burroughs Home & Gardens, 2505 First St, Fort Myers, FL",
-      "The Westin Cape Coral Resort at Marina Village, 5951 Silver King Blvd, Cape Coral, FL",
-      "Margaritaville Beach Resort, 251 Crescent St, Fort Myers Beach, FL",
-      "Pink Shell Beach Resort & Marina, 275 Estero Blvd, Fort Myers Beach, FL",
-      "Tween Waters Island Resort & Spa, 15951 Captiva Dr, Captiva, FL",
-      "South Seas Island Resort, 5400 Plantation Rd, Captiva, FL",
-      "Sundial Beach Resort & Spa, 1451 Middle Gulf Dr, Sanibel, FL",
-      "Casa Ybel Resort, 2255 W Gulf Dr, Sanibel, FL",
-      "Hyatt Regency Coconut Point Resort & Spa, 5001 Coconut Rd, Bonita Springs, FL",
-      "The Ritz-Carlton, 280 Vanderbilt Beach Rd, Naples, FL",
-      "Naples Grande Beach Resort, 475 Seagate Dr, Naples, FL"
-    ];
-
-    function autocompleteVenue(val) {
-      const list = document.getElementById('autocompleteList');
-      list.innerHTML = '';
-      if (!val || val.length < 2) {
-        list.style.display = 'none';
-        return;
-      }
-      const matches = swflVenues.filter(v => v.toLowerCase().includes(val.toLowerCase()));
-      if (matches.length === 0) {
-        list.style.display = 'none';
-        return;
-      }
-      matches.forEach(match => {
-        const item = document.createElement('div');
-        item.textContent = match;
-        item.onclick = function() {
-          document.getElementById('venueInput').value = match;
-          list.style.display = 'none';
-        };
-        list.appendChild(item);
-      });
-      list.style.display = 'block';
-    }
-
-    document.addEventListener('click', function(e) {
-      if (e.target.id !== 'venueInput') {
-        const list = document.getElementById('autocompleteList');
-        if (list) list.style.display = 'none';
-      }
-    });
-
-    function updateEstimatedPrice() {
-      document.getElementById('priceDisplay').textContent = "$XXX";
-    }
-
-    function handleQuoteSubmit(e) {
-      e.preventDefault();
-      const city = document.getElementById('swflCity').value;
-      const date = document.getElementById('eventDate').value;
-      alert(`Thank you! Your availability request for ${date} in ${city} has been received.`);
-    }
-
-    function openPaymentModal() { document.getElementById('paymentModal').classList.add('active'); }
-    function closePaymentModal() { document.getElementById('paymentModal').classList.remove('active'); }
-    function handlePaymentSubmit(e) {
-      e.preventDefault();
-      alert('Secure Retainer Checkout initialized.');
-      closePaymentModal();
-    }
-  </script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

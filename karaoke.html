@@ -3,9 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex, nofollow" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <title>Karaoke, Singo & Interactive Games | Coastal Paradise Events | SWFL</title>
   <meta name="description" content="Full-production live mixing board karaoke, Singo (Music Bingo), and interactive pub trivia for weddings, private parties, corporate events, and bars in SWFL." />
+  <link rel="canonical" href="https://coastalparadiseevents.com/karaoke.html" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://coastalparadiseevents.com/karaoke.html" />
+  <meta property="og:title" content="Karaoke, Singo & Interactive Games | Coastal Paradise Events | SWFL" />
+  <meta property="og:description" content="Full-production live mixing board karaoke, Singo (Music Bingo), and interactive pub trivia for weddings, private parties, corporate events, and bars in SWFL." />
+  <meta property="og:image" content="https://coastalparadiseevents.com/assets/images/logo.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://coastalparadiseevents.com/karaoke.html" />
+  <meta name="twitter:title" content="Karaoke, Singo & Interactive Games | Coastal Paradise Events | SWFL" />
+  <meta name="twitter:description" content="Full-production live mixing board karaoke, Singo (Music Bingo), and interactive pub trivia in Southwest Florida." />
+  <meta name="twitter:image" content="https://coastalparadiseevents.com/assets/images/logo.jpg" />
+
+  <!-- Geographic SEO (SWFL / Fort Myers / Naples 33919) -->
+  <meta name="geo.region" content="US-FL" />
+  <meta name="geo.placename" content="Fort Myers, FL 33919" />
+  <meta name="geo.position" content="26.5689;-81.8986" />
+  <meta name="ICBM" content="26.5689, -81.8986" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -20,6 +42,7 @@
     </a>
     <nav id="mainNav">
       <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About Us</a>
       <a href="weddings.html" class="nav-link">Weddings</a>
       <a href="corporate.html" class="nav-link">Corporate</a>
       <a href="resorts.html" class="nav-link">Resorts & Lounges</a>
@@ -78,34 +101,57 @@
     </div>
   </main>
 
+  <!-- Retainer & Date Reservation Modal -->
   <div id="paymentModal" class="modal-overlay">
     <div class="modal-card">
       <button type="button" class="close-modal" onclick="closePaymentModal()">&times;</button>
-      <h3><i class="fa-solid fa-shield-halved"></i> Lock Your Date Online</h3>
-      <p>Submit your retainer deposit via secure digital checkout to confirm your reservation on our Southwest Florida calendar.</p>
-      <form onsubmit="handlePaymentSubmit(event)">
-        <div class="form-group">
-          <label>Client Full Name</label>
-          <input type="text" class="form-control" placeholder="Name on reservation" required />
+      <h3><i class="fa-solid fa-calendar-check"></i> Reserve &amp; Lock Your Date</h3>
+      <p>Coastal Paradise Events accepts direct bank-to-bank transfers via Zelle®, formal digital invoice requests, or direct telephone confirmation.</p>
+
+      <!-- Option 1: Zelle -->
+      <div class="payment-option-card">
+        <div class="payment-option-header">
+          <span class="payment-option-title"><i class="fa-solid fa-bolt" style="color: var(--gold-primary);"></i> Zelle® Direct Transfer</span>
+          <span class="payment-option-badge">Instant • Zero Fees</span>
         </div>
-        <div class="form-group">
-          <label>Event Date</label>
-          <input type="date" class="form-control" required />
+        <p class="payment-option-desc">Send retainer deposit securely from your mobile banking app directly to our business account. Zero processing fees.</p>
+        <div class="payment-info-box">
+          Recipient: <strong>Coastal Paradise Events</strong><br />
+          Zelle Phone: <strong>(239) 318-0510</strong><br />
+          Zelle Email: <strong>richlomeli239@gmail.com</strong>
         </div>
-        <div class="form-group">
-          <label>Payment Method</label>
-          <select class="form-control">
-            <option>Credit / Debit Card (Stripe Checkout)</option>
-            <option>Apple Pay / Google Pay</option>
-            <option>Direct ACH / Zelle Invoice</option>
-          </select>
+      </div>
+
+      <!-- Option 2: Digital Invoice & Contract Request -->
+      <div class="payment-option-card">
+        <div class="payment-option-header">
+          <span class="payment-option-title"><i class="fa-solid fa-file-invoice-dollar" style="color: var(--teal-glow);"></i> Request Retainer Invoice &amp; Contract</span>
+          <span class="payment-option-badge">Digital Agreement</span>
         </div>
-        <div class="price-display">
-          <span>Retainer Deposit Amount: </span>
-          <span class="price-val">$XXX</span>
-        </div>
-        <button type="submit" class="btn-gold" style="width: 100%;">Process Secure Retainer</button>
-      </form>
+        <p class="payment-option-desc">Prefer a written digital contract and formal itemized retainer invoice emailed to you? Submit below:</p>
+        <form onsubmit="handleInvoiceSubmit(event)" style="margin-top: 0.75rem;">
+          <input type="hidden" name="_subject" value="Retainer Invoice &amp; Contract Request" />
+          <div class="form-group" style="margin-bottom: 0.5rem;">
+            <input type="text" name="clientFullName" class="form-control" placeholder="Your Full Name" required />
+          </div>
+          <div class="form-row" style="margin-bottom: 0.5rem;">
+            <input type="email" name="clientInvoiceEmail" class="form-control" placeholder="Email for Invoice" required />
+            <input type="tel" name="clientInvoicePhone" class="form-control" placeholder="Phone (Call/Text)" required />
+          </div>
+          <div class="form-group" style="margin-bottom: 0.75rem;">
+            <input type="date" name="clientEventDate" class="form-control" required />
+          </div>
+          <button type="submit" class="btn-gold" style="width: 100%; padding: 0.55rem;"><i class="fa-solid fa-paper-plane"></i> Email Me Retainer Invoice &amp; Contract</button>
+        </form>
+      </div>
+
+      <!-- Option 3: Phone / Text -->
+      <div style="text-align: center; margin-top: 1rem;">
+        <span style="font-size: 0.82rem; color: var(--text-muted);">Have questions or prefer phone confirmation?</span><br />
+        <a href="tel:+12393180510" style="color: var(--gold-primary); font-weight: 700; font-size: 0.95rem; text-decoration: none;">
+          <i class="fa-solid fa-phone"></i> Call or Text (239) 318-0510
+        </a>
+      </div>
     </div>
   </div>
 
@@ -115,10 +161,20 @@
         <img src="assets/images/logo.jpg" alt="Coastal Paradise Events" class="footer-logo-img" />
       </a>
       <p class="footer-locations">Fort Myers • Cape Coral • Naples • Sanibel • Captiva • Bonita Springs • Estero</p>
-      <p class="footer-phone">(239) XXX-XXXX</p>
+      <a href="tel:+12393180510" class="footer-phone" aria-label="Call or text (239) 318-0510">
+        <i class="fa-solid fa-phone"></i> (239) 318-0510
+      </a>
+      <div class="footer-phone-actions">
+        <a href="tel:+12393180510" class="footer-badge-call"><i class="fa-solid fa-phone"></i> Call</a>
+        <a href="sms:+12393180510" class="footer-badge-text"><i class="fa-solid fa-comment-sms"></i> Text Us</a>
+      </div>
+      <p class="sms-disclaimer">
+        By calling or texting (239) 318-0510, you agree to receive informational calls and text messages (SMS/MMS) from Coastal Paradise Events. Message &amp; data rates may apply. Frequency varies. Reply STOP to cancel or HELP for assistance.
+      </p>
     </div>
     <div class="footer-links">
       <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
       <a href="weddings.html">Weddings</a>
       <a href="corporate.html">Corporate</a>
       <a href="resorts.html">Resorts & Lounges</a>
@@ -126,17 +182,9 @@
       <a href="karaoke.html">Karaoke & More</a>
       <a href="quote.html">Custom Quote</a>
     </div>
-    <p class="footer-copy">&copy; 2026 Coastal Paradise Events. All rights reserved.</p>
+    <p class="footer-copy">&copy; 2026 Coastal Paradise Events. Fort Myers, FL 33919. All rights reserved.</p>
   </footer>
 
-  <script>
-    function openPaymentModal() { document.getElementById('paymentModal').classList.add('active'); }
-    function closePaymentModal() { document.getElementById('paymentModal').classList.remove('active'); }
-    function handlePaymentSubmit(e) {
-      e.preventDefault();
-      alert('Secure Retainer Checkout initialized.');
-      closePaymentModal();
-    }
-  </script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

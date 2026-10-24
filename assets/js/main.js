@@ -249,7 +249,6 @@ async function handleQuoteSubmit(e) {
       throw new Error('Network response was not ok.');
     }
   } catch (err) {
-    console.error('Submission error:', err);
     alert(`Thank you ${clientName}! Your inquiry for ${eventDate} in ${city} has been received. If you do not hear from us shortly, please call or text us directly at (239) 318-0510.`);
     if (submitBtn) {
       submitBtn.disabled = false;

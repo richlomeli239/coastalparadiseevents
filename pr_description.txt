@@ -1,0 +1,7 @@
+🧪 [testing improvement] Add test for closeMobileNav
+
+🎯 **What:** Added tests for the `closeMobileNav` function in `assets/js/main.js`. This function lacked test coverage. Since the project didn't have a formal testing setup, I initialized a `package.json`, installed `jest` and `jest-environment-jsdom`, and added a `.gitignore` to ignore `node_modules`.
+
+📊 **Coverage:** Covered the happy path (DOM elements are present, classes are correctly removed and aria-expanded is updated) and error conditions/edge cases where one or both of the DOM elements (`mobileNavToggle` and `mainNav`) are missing from the DOM.
+
+✨ **Result:** Improved test coverage by verifying the behavior of `closeMobileNav`. Ensures that no errors are thrown if elements are missing, and that the navigation is correctly closed.

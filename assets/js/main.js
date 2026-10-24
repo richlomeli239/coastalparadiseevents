@@ -1,5 +1,5 @@
 // Coastal Paradise Events - Global Interactions & Form Operations
-// Official Contact: (239) 318-0510 | richlomeli239@gmail.com | Fort Myers, FL 33919
+// Official Contact: (941) 500-2566 | contact@coastalparadiseevents.com | Fort Myers, FL 33919
 
 // Mobile Navigation Hamburger Control
 function toggleMobileNav() {
@@ -239,7 +239,7 @@ async function handleQuoteSubmit(e) {
               </ul>
             </div>
             <p style="font-size: 0.85rem; color: var(--text-muted);">
-              Need immediate priority date locking? Call or text us directly at <a href="tel:+12393180510" style="color: var(--gold-primary); font-weight: 700;">(239) 318-0510</a>.
+              Need immediate priority date locking? Call or text us directly at <a href="tel:+19415002566" style="color: var(--gold-primary); font-weight: 700;">(239) 318-0510</a>.
             </p>
           </div>
         `;
@@ -250,7 +250,7 @@ async function handleQuoteSubmit(e) {
     }
   } catch (err) {
     console.error('Submission error:', err);
-    alert(`Thank you ${clientName}! Your inquiry for ${eventDate} in ${city} has been received. If you do not hear from us shortly, please call or text us directly at (239) 318-0510.`);
+    alert(`Thank you ${clientName}! Your inquiry for ${eventDate} in ${city} has been received. If you do not hear from us shortly, please call or text us directly at (941) 500-2566.`);
     if (submitBtn) {
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalBtnHtml;
@@ -296,14 +296,14 @@ async function handleInvoiceSubmit(e) {
     });
 
     if (res.ok) {
-      alert(`Thank you, ${name}! Your retainer invoice & agreement request for ${date} has been sent to Rich Lomeli. We will email your digital contract and confirmation within 24 hours. You may also text (239) 318-0510 with any immediate questions.`);
+      alert(`Thank you, ${name}! Your retainer invoice & agreement request for ${date} has been sent to Coastal Paradise Events. We will email your digital contract and confirmation within 24 hours. You may also text (239) 318-0510 with any immediate questions.`);
       closePaymentModal();
       form.reset();
     } else {
       throw new Error('Invoice request failed');
     }
   } catch (err) {
-    alert(`Thank you, ${name}! Your request has been noted. Please text or call (239) 318-0510 to immediately confirm your date.`);
+    alert(`Thank you, ${name}! Your request has been noted. Please call or text us at (941) 500-2566 to immediately confirm your date.`);
     closePaymentModal();
   } finally {
     if (submitBtn) {

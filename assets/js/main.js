@@ -99,7 +99,8 @@ function autocompleteVenue(val) {
     list.style.display = 'none';
     return;
   }
-  const matches = swflVenues.filter(v => v.toLowerCase().includes(val.toLowerCase()));
+  const lowerVal = val.toLowerCase();
+  const matches = swflVenues.filter(v => v.toLowerCase().includes(lowerVal));
   if (matches.length === 0) {
     list.style.display = 'none';
     return;

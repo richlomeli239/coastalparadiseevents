@@ -126,6 +126,16 @@ document.addEventListener('click', function(e) {
   }
 });
 
+
+// Cache addons checkboxes globally
+let cachedAddonCheckboxes = null;
+function getAddonCheckboxes() {
+  if (!cachedAddonCheckboxes) {
+    cachedAddonCheckboxes = Array.from(document.querySelectorAll('.addons-grid input[type="checkbox"]'));
+  }
+  return cachedAddonCheckboxes;
+}
+
 // Dynamic Investment Range Estimator
 function updateEstimatedPrice() {
   const priceDisplay = document.getElementById('priceDisplay');
@@ -153,8 +163,10 @@ function updateEstimatedPrice() {
   }
 
   // Count checked add-ons
-  const checkedAddons = document.querySelectorAll('.addons-grid input[type="checkbox"]:checked');
-  const addonCount = checkedAddons.length;
+  let addonCount = 0;
+  getAddonCheckboxes().forEach(cb => {
+    if (cb.checked) addonCount++;
+  });
   const addonMin = addonCount * 175;
   const addonMax = addonCount * 275;
 
@@ -183,9 +195,10 @@ async function handleQuoteSubmit(e) {
 
   // Gather selected add-ons
   const selectedAddons = [];
-  document.querySelectorAll('.addons-grid input[type="checkbox"]:checked').forEach(cb => {
-    const label = cb.closest('.addon-item')?.querySelector('.addon-label')?.textContent?.trim();
-    if (label) selectedAddons.push(label);
+  getAddonCheckboxes().forEach(cb => {
+    if (cb.checked && cb.value) {
+      selectedAddons.push(cb.value);
+    }
   });
 
   const payload = {

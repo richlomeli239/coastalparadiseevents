@@ -164,6 +164,21 @@ function updateEstimatedPrice() {
   priceDisplay.textContent = `$${finalMin.toLocaleString()} – $${finalMax.toLocaleString()}`;
 }
 
+
+// HTML escape utility to prevent XSS
+function escapeHTML(str) {
+  if (typeof str !== 'string') return str;
+  return str.replace(/[&<>'"]/g,
+    tag => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      "'": '&#39;',
+      '"': '&quot;'
+    }[tag] || tag)
+  );
+}
+
 // Operational FormSubmit.co AJAX Integration (100% Free, Instant Delivery)
 async function handleQuoteSubmit(e) {
   e.preventDefault();
@@ -228,14 +243,14 @@ async function handleQuoteSubmit(e) {
             <i class="fa-solid fa-circle-check quote-success-icon"></i>
             <h2 style="color: var(--gold-light); margin-bottom: 0.75rem; font-size: 1.8rem;">Availability Request Received!</h2>
             <p style="font-size: 1.05rem; color: #fff; max-width: 600px; margin: 0 auto 1.5rem;">
-              Thank you, <strong>${clientName}</strong>. Your custom entertainment inquiry for <strong>${eventDate}</strong> in <strong>${city}</strong> has been transmitted directly to our director's desk.
+              Thank you, <strong>${escapeHTML(clientName)}</strong>. Your custom entertainment inquiry for <strong>${escapeHTML(eventDate)}</strong> in <strong>${escapeHTML(city)}</strong> has been transmitted directly to our director's desk.
             </p>
             <div style="background: var(--midnight-dark); border: 1px solid var(--card-border); border-radius: 8px; padding: 1.25rem; max-width: 500px; margin: 0 auto 1.5rem; text-align: left;">
               <div style="color: var(--gold-primary); font-weight: 700; margin-bottom: 0.35rem;">Expected Next Steps:</div>
               <ul style="color: var(--text-muted); font-size: 0.88rem; list-style: none; padding-left: 0;">
-                <li style="margin-bottom: 0.4rem;"><i class="fa-solid fa-check" style="color: var(--gold-primary); margin-right: 0.5rem;"></i> Confirmation dispatched to <strong>${clientEmail}</strong></li>
-                <li style="margin-bottom: 0.4rem;"><i class="fa-solid fa-check" style="color: var(--gold-primary); margin-right: 0.5rem;"></i> Calendar verification for <strong>${venue}</strong></li>
-                <li><i class="fa-solid fa-check" style="color: var(--gold-primary); margin-right: 0.5rem;"></i> Personal follow-up via call or text to <strong>${clientPhone}</strong> within 24 hours</li>
+                <li style="margin-bottom: 0.4rem;"><i class="fa-solid fa-check" style="color: var(--gold-primary); margin-right: 0.5rem;"></i> Confirmation dispatched to <strong>${escapeHTML(clientEmail)}</strong></li>
+                <li style="margin-bottom: 0.4rem;"><i class="fa-solid fa-check" style="color: var(--gold-primary); margin-right: 0.5rem;"></i> Calendar verification for <strong>${escapeHTML(venue)}</strong></li>
+                <li><i class="fa-solid fa-check" style="color: var(--gold-primary); margin-right: 0.5rem;"></i> Personal follow-up via call or text to <strong>${escapeHTML(clientPhone)}</strong> within 24 hours</li>
               </ul>
             </div>
             <p style="font-size: 0.85rem; color: var(--text-muted);">

@@ -1,0 +1,7 @@
+I have written unit tests for `closePaymentModal` in `assets/js/main.js`. Since `main.js` is not written as an ES module and has no exports, the test reads the file content and evaluates it using `window.eval(mainJsCode)` in a JsDom environment created by Jest.
+
+The tests cover the following scenarios for `closePaymentModal`:
+1. It successfully removes the 'active' class from `#paymentModal` if the modal exists.
+2. It does not throw an error if the modal `#paymentModal` does not exist in the DOM.
+
+Are there any other test cases I should include?

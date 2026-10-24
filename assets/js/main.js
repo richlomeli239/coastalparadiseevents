@@ -184,7 +184,7 @@ async function handleQuoteSubmit(e) {
   // Gather selected add-ons
   const selectedAddons = [];
   document.querySelectorAll('.addons-grid input[type="checkbox"]:checked').forEach(cb => {
-    const label = cb.closest('.addon-item')?.querySelector('.addon-label')?.textContent?.trim();
+    const label = cb.value;
     if (label) selectedAddons.push(label);
   });
 

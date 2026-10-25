@@ -241,14 +241,7 @@ async function handleQuoteSubmit(e) {
   }
 
   try {
-    const response = await fetch('https://formsubmit.co/ajax/richlomeli239@gmail.com', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    });
+    const response = await sendFormData(payload);
 
     if (response.ok) {
       const quoteBox = document.querySelector('.quote-box');
@@ -319,11 +312,7 @@ async function handleInvoiceSubmit(e) {
       requestedAt: new Date().toLocaleString()
     };
 
-    const res = await fetch('https://formsubmit.co/ajax/richlomeli239@gmail.com', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(payload)
-    });
+    const res = await sendFormData(payload);
 
     if (res.ok) {
       alert(`Thank you, ${name}! Your retainer invoice & agreement request for ${date} has been sent to Coastal Paradise Events. We will email your digital contract and confirmation within 24 hours. You may also text (239) 318-0510 with any immediate questions.`);
@@ -341,4 +330,16 @@ async function handleInvoiceSubmit(e) {
       submitBtn.innerHTML = originalHtml;
     }
   }
+}
+
+
+async function sendFormData(payload) {
+  return await fetch('https://formsubmit.co/ajax/richlomeli239@gmail.com', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  });
 }

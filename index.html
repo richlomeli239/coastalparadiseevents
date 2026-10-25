@@ -75,6 +75,20 @@
     "description": "Premier wedding DJ, Master of Ceremonies, corporate event audio, and resort entertainment across Southwest Florida."
   }
   </script>
+
+  <!-- Video Schema for Google Video Indexing & Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Coastal Paradise Events - Premier Southwest Florida Entertainment",
+    "description": "Luxury wedding DJ, Master of Ceremonies, corporate galas, and waterfront resort soundscapes across Fort Myers, Naples, and Sanibel.",
+    "thumbnailUrl": "https://coastalparadiseevents.com/assets/images/hero-celebration-poster.jpg",
+    "uploadDate": "2026-10-25T00:00:00-04:00",
+    "contentUrl": "https://coastalparadiseevents.com/assets/videos/hero-celebration.mp4",
+    "embedUrl": "https://coastalparadiseevents.com/"
+  }
+  </script>
 </head>
 <body>
 
@@ -101,73 +115,196 @@
   </header>
 
   <main class="page-container">
-    <div class="hero">
-      <div class="hero-badge"><i class="fa-solid fa-gem"></i> Southwest Florida Event Production</div>
-      <h1>Bespoke Entertainment Crafted for <span>Flawless Celebrations</span></h1>
-      <p>
-        Elevating weddings, corporate galas, waterfront resorts and high-energy hospitality venues across Fort Myers, Cape Coral, Naples, Sanibel Island, Captiva Island, Bonita Springs, and Estero.
-      </p>
-      <div class="hero-btns">
-        <a href="quote.html" class="btn-gold">Check Date & Availability</a>
-        <a href="weddings.html" class="btn-outline">Explore Wedding Experiences</a>
+    <!-- Hero Section with Background Video & Translucent Glass Bubble -->
+    <div class="hero video-hero">
+      <div class="hero-video-bg-wrap" aria-hidden="true">
+        <video id="heroVideo" class="hero-video-el" autoplay loop muted playsinline poster="assets/images/hero-celebration-poster.jpg">
+          <source src="assets/videos/hero-celebration.mp4" type="video/mp4" />
+          <source src="https://cdn.coverr.co/videos/coverr-couple-dancing-4825/720p.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-video-overlay"></div>
+      </div>
+      <div class="hero-glass-bubble">
+        <div class="hero-badge"><i class="fa-solid fa-gem"></i> Southwest Florida Event Production</div>
+        <h1>Bespoke Entertainment Crafted for <span>Flawless Celebrations</span></h1>
+        <p>
+          Elevating weddings, corporate galas, waterfront resorts and high-energy hospitality venues across Fort Myers, Cape Coral, Naples, Sanibel Island, Captiva Island, Bonita Springs, and Estero.
+        </p>
+        <div class="hero-btns">
+          <a href="quote.html" class="btn-gold">Check Date & Availability</a>
+          <a href="weddings.html" class="btn-outline">Explore Wedding Experiences</a>
+        </div>
+
+        <!-- Interactive Scene Switcher -->
+        <div class="hero-scene-switcher" aria-label="Select background celebration video scene">
+          <span class="switcher-label"><i class="fa-solid fa-video"></i> Experience SWFL Moments:</span>
+          <div class="switcher-pills">
+            <button type="button" class="scene-pill active" data-video="assets/videos/hero-celebration.mp4" data-poster="assets/images/hero-celebration-poster.jpg" data-cdn="https://cdn.coverr.co/videos/coverr-couple-dancing-4825/720p.mp4">
+              <i class="fa-solid fa-heart"></i> Beach Romance
+            </button>
+            <button type="button" class="scene-pill" data-video="assets/videos/pillar-resorts.mp4" data-poster="assets/images/pillar-resorts-poster.jpg" data-cdn="https://cdn.coverr.co/videos/coverr-friends-raising-a-toast-7037/720p.mp4">
+              <i class="fa-solid fa-champagne-glasses"></i> Resort Toast
+            </button>
+            <button type="button" class="scene-pill" data-video="assets/videos/pillar-nightlife.mp4" data-poster="assets/images/pillar-nightlife-poster.jpg" data-cdn="https://cdn.coverr.co/videos/coverr-dj-at-a-party-8079/720p.mp4">
+              <i class="fa-solid fa-compact-disc"></i> Nightlife &amp; DJ
+            </button>
+            <button type="button" class="scene-pill" data-video="assets/videos/vibe-celebration.mp4" data-poster="assets/images/vibe-celebration-poster.jpg" data-cdn="https://cdn.coverr.co/videos/coverr-women-waving-sparklers-around-5334/720p.mp4">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Celebration Joy
+            </button>
+          </div>
+          <button type="button" class="video-play-pause-toggle" id="heroVideoToggle" aria-label="Pause background video">
+            <i class="fa-solid fa-pause"></i>
+          </button>
+        </div>
       </div>
     </div>
 
-    <div class="heritage-ribbon">
-      <div class="heritage-header">
-        <i class="fa-solid fa-compact-disc"></i>
-        <div>
-          <h3>Former Radio & Nightclub DJ | Accomplished Master of Ceremonies</h3>
-          <p>1,000+ Celebrations | Iconic Midwest & East Coast Residencies | International Tours</p>
+    <!-- Pedigree & Callout Ribbon with Ambient Live DJ Video & Translucent Bubble -->
+    <div class="heritage-ribbon video-ribbon">
+      <div class="ribbon-video-bg-wrap" aria-hidden="true">
+        <video class="ribbon-video-el" autoplay loop muted playsinline poster="assets/images/pillar-nightlife-poster.jpg">
+          <source src="assets/videos/pillar-nightlife.mp4" type="video/mp4" />
+          <source src="https://cdn.coverr.co/videos/coverr-dj-at-a-party-8079/720p.mp4" type="video/mp4" />
+        </video>
+        <div class="ribbon-video-overlay"></div>
+      </div>
+      <div class="ribbon-glass-content">
+        <div class="heritage-header">
+          <i class="fa-solid fa-compact-disc"></i>
+          <div>
+            <h3>Former Radio & Nightclub DJ | Accomplished Master of Ceremonies</h3>
+            <p>1,000+ Celebrations | Iconic Midwest & East Coast Residencies | International Tours</p>
+          </div>
+        </div>
+        <p>
+          Led by an accomplished national and international DJ, former national wedding DJ franchise headquarters trainer and entertainer and veteran broadcast personality. Rick Paradise has performed for major hospitality activations to Superbowl 39 pre/post parties, golf tournament 19th holes, college game pre/post parties to multi-million dollar nightclubs to 1000+ open air events and 700+ wedding receptions to small private parties, every event is anchored by polished microphone authority, real performance craft, seamless timeline execution and genuine care for you, your guests/clients and a successful, memorable event.
+        </p>
+        <div class="heritage-badges">
+          <span class="badge-pill"><i class="fa-solid fa-award"></i> Former National Wedding DJ Franchise Trainer</span>
+          <span class="badge-pill"><i class="fa-solid fa-globe"></i> International DJ and Performance Veteran</span>
+          <span class="badge-pill"><i class="fa-solid fa-heart"></i> Experience & Geniune Care</span>
+          <span class="badge-pill"><i class="fa-solid fa-record-vinyl"></i> DJ & MC Artisry on Professional Equipment</span>
+          <span class="badge-pill"><i class="fa-solid fa-camera"></i> 100% Media Vendor Harmony</span>
+          <span class="badge-pill"><i class="fa-solid fa-microphone"></i> Event Planning & Coordination Expertise</span>
         </div>
       </div>
-      <p>
-        Led by an accomplished national and international DJ, former national wedding DJ franchise headquarters trainer and entertainer and veteran broadcast personality. Rick Paradise has performed for major hospitality activations to Superbowl 39 pre/post parties, golf tournament 19th holes, college game pre/post parties to multi-million dollar nightclubs to 1000+ open air events and 700+ wedding receptions to small private parties, every event is anchored by polished microphone authority, real performance craft, seamless timeline execution and genuine care for you, your guests/clients and a successful, memorable event.
-      </p>
-      <div class="heritage-badges">
-        <span class="badge-pill"><i class="fa-solid fa-award"></i> Former National Wedding DJ Franchise Trainer</span>
-        <span class="badge-pill"><i class="fa-solid fa-globe"></i> International DJ and Performance Veteran</span>
-        <span class="badge-pill"><i class="fa-solid fa-heart"></i> Experience & Geniune Care</span>
-        <span class="badge-pill"><i class="fa-solid fa-record-vinyl"></i> DJ & MC Artisry on Professional Equipment</span>
-        <span class="badge-pill"><i class="fa-solid fa-camera"></i> 100% Media Vendor Harmony</span>
-        <span class="badge-pill"><i class="fa-solid fa-microphone"></i> Event Planning & Coordination Expertise</span>
     </div>
 
     <h2 class="section-title">Specialized Entertainment Pillars</h2>
     <p class="section-subtitle">Full-service audio, lighting, coordination and crowd engagement</p>
 
+    <!-- 3 Pillar Cards with Interlaced Video Backgrounds & Translucent Bubbles -->
     <div class="grid-3">
-      <div class="card">
-        <i class="fa-solid fa-wedding card-icon"></i>
-        <h3>Weddings & Coordination</h3>
-        <p>White-glove reception pacing, dignified introduction and complete synchronization with your photographer and videographer.</p>
-        <ul>
-          <li><i class="fa-solid fa-check"></i> Commanding Master of Ceremonies</li>
-          <li><i class="fa-solid fa-check"></i> Corded & Cordless Pro Microphones</li>
-          <li><i class="fa-solid fa-check"></i> Generator Power for Beach Ceremonies</li>
-        </ul>
+      <!-- Pillar 1: Weddings -->
+      <div class="card video-card">
+        <div class="card-video-bg-wrap" aria-hidden="true">
+          <video class="card-video-el" autoplay loop muted playsinline poster="assets/images/pillar-weddings-poster.jpg">
+            <source src="assets/videos/pillar-weddings.mp4" type="video/mp4" />
+            <source src="https://cdn.coverr.co/videos/coverr-wedding-by-the-beach-134/720p.mp4" type="video/mp4" />
+          </video>
+          <div class="card-video-overlay"></div>
+        </div>
+        <div class="card-glass-content">
+          <i class="fa-solid fa-wedding card-icon"></i>
+          <h3>Weddings & Coordination</h3>
+          <p>White-glove reception pacing, dignified introduction and complete synchronization with your photographer and videographer.</p>
+          <ul>
+            <li><i class="fa-solid fa-check"></i> Commanding Master of Ceremonies</li>
+            <li><i class="fa-solid fa-check"></i> Corded & Cordless Pro Microphones</li>
+            <li><i class="fa-solid fa-check"></i> Generator Power for Beach Ceremonies</li>
+          </ul>
+        </div>
       </div>
 
-      <div class="card">
-        <i class="fa-solid fa-building card-icon"></i>
-        <h3>Corporate & Resort Events</h3>
-        <p>Crystal-clear executive audio, awards banquet stagers and sophisticated sunset soundscapes for luxury waterfront resorts.</p>
-        <ul>
-          <li><i class="fa-solid fa-check"></i> Keynote & Awards AV Reinforcement</li>
-          <li><i class="fa-solid fa-check"></i> Professional Lighting & Uplighting</li>
-          <li><i class="fa-solid fa-check"></i> Pool Deck & Waterfront Lounge Sets</li>
-        </ul>
+      <!-- Pillar 2: Corporate & Resort Events -->
+      <div class="card video-card">
+        <div class="card-video-bg-wrap" aria-hidden="true">
+          <video class="card-video-el" autoplay loop muted playsinline poster="assets/images/pillar-resorts-poster.jpg">
+            <source src="assets/videos/pillar-resorts.mp4" type="video/mp4" />
+            <source src="https://cdn.coverr.co/videos/coverr-friends-raising-a-toast-7037/720p.mp4" type="video/mp4" />
+          </video>
+          <div class="card-video-overlay"></div>
+        </div>
+        <div class="card-glass-content">
+          <i class="fa-solid fa-building card-icon"></i>
+          <h3>Corporate & Resort Events</h3>
+          <p>Crystal-clear executive audio, awards banquet stagers and sophisticated sunset soundscapes for luxury waterfront resorts.</p>
+          <ul>
+            <li><i class="fa-solid fa-check"></i> Keynote & Awards AV Reinforcement</li>
+            <li><i class="fa-solid fa-check"></i> Professional Lighting & Uplighting</li>
+            <li><i class="fa-solid fa-check"></i> Pool Deck & Waterfront Lounge Sets</li>
+          </ul>
+        </div>
       </div>
 
-      <div class="card">
-        <i class="fa-solid fa-microphone-lines card-icon"></i>
-        <h3>Nightlife, Karaoke & More</h3>
-        <p>Turn slow weeknights into packed houses with real vinyl/CDJ mixing, live console karaoke, Singo (Music Bingo) and/or pub trivia.</p>
-        <ul>
-          <li><i class="fa-solid fa-check"></i> Full-Production Vocal Mixing Console</li>
-          <li><i class="fa-solid fa-check"></i> Interactive Singo & Trivia Nights</li>
-          <li><i class="fa-solid fa-check"></i> Professional Sound & Lighting</li>
-        </ul>
+      <!-- Pillar 3: Nightlife, Karaoke & More -->
+      <div class="card video-card">
+        <div class="card-video-bg-wrap" aria-hidden="true">
+          <video class="card-video-el" autoplay loop muted playsinline poster="assets/images/vibe-karaoke-poster.jpg">
+            <source src="assets/videos/vibe-karaoke.mp4" type="video/mp4" />
+            <source src="https://cdn.coverr.co/videos/coverr-a-guy-singing-into-a-microphone-745/720p.mp4" type="video/mp4" />
+          </video>
+          <div class="card-video-overlay"></div>
+        </div>
+        <div class="card-glass-content">
+          <i class="fa-solid fa-microphone-lines card-icon"></i>
+          <h3>Nightlife, Karaoke & More</h3>
+          <p>Turn slow weeknights into packed houses with real vinyl/CDJ mixing, live console karaoke, Singo (Music Bingo) and/or pub trivia.</p>
+          <ul>
+            <li><i class="fa-solid fa-check"></i> Full-Production Vocal Mixing Console</li>
+            <li><i class="fa-solid fa-check"></i> Interactive Singo & Trivia Nights</li>
+            <li><i class="fa-solid fa-check"></i> Professional Sound & Lighting</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interlaced Live Celebration Reel (Referencing Site Experiences) -->
+    <div class="moments-reel-section">
+      <div class="moments-reel-grid">
+        <a href="weddings.html" class="moment-vignette" aria-label="Explore Wedding Experiences">
+          <video class="moment-video-el" autoplay loop muted playsinline poster="assets/images/hero-celebration-poster.jpg">
+            <source src="assets/videos/hero-celebration.mp4" type="video/mp4" />
+            <source src="https://cdn.coverr.co/videos/coverr-couple-dancing-4825/720p.mp4" type="video/mp4" />
+          </video>
+          <div class="moment-caption-bubble">
+            <span class="moment-caption-title">Coastal Weddings</span>
+            <span class="moment-caption-tag"><i class="fa-solid fa-arrow-right"></i> Explore</span>
+          </div>
+        </a>
+
+        <a href="resorts.html" class="moment-vignette" aria-label="Explore Resorts and Lounges">
+          <video class="moment-video-el" autoplay loop muted playsinline poster="assets/images/pillar-resorts-poster.jpg">
+            <source src="assets/videos/pillar-resorts.mp4" type="video/mp4" />
+            <source src="https://cdn.coverr.co/videos/coverr-friends-raising-a-toast-7037/720p.mp4" type="video/mp4" />
+          </video>
+          <div class="moment-caption-bubble">
+            <span class="moment-caption-title">Resort Soundscapes</span>
+            <span class="moment-caption-tag"><i class="fa-solid fa-arrow-right"></i> Explore</span>
+          </div>
+        </a>
+
+        <a href="corporate.html" class="moment-vignette" aria-label="Explore Corporate Galas">
+          <video class="moment-video-el" autoplay loop muted playsinline poster="assets/images/vibe-celebration-poster.jpg">
+            <source src="assets/videos/vibe-celebration.mp4" type="video/mp4" />
+            <source src="https://cdn.coverr.co/videos/coverr-women-waving-sparklers-around-5334/720p.mp4" type="video/mp4" />
+          </video>
+          <div class="moment-caption-bubble">
+            <span class="moment-caption-title">Corporate Galas</span>
+            <span class="moment-caption-tag"><i class="fa-solid fa-arrow-right"></i> Explore</span>
+          </div>
+        </a>
+
+        <a href="karaoke.html" class="moment-vignette" aria-label="Explore Karaoke and Trivia">
+          <video class="moment-video-el" autoplay loop muted playsinline poster="assets/images/vibe-karaoke-poster.jpg">
+            <source src="assets/videos/vibe-karaoke.mp4" type="video/mp4" />
+            <source src="https://cdn.coverr.co/videos/coverr-a-guy-singing-into-a-microphone-745/720p.mp4" type="video/mp4" />
+          </video>
+          <div class="moment-caption-bubble">
+            <span class="moment-caption-title">Live Karaoke & Singo</span>
+            <span class="moment-caption-tag"><i class="fa-solid fa-arrow-right"></i> Explore</span>
+          </div>
+        </a>
       </div>
     </div>
   </main>

@@ -986,3 +986,377 @@ footer {
     text-align: center;
   }
 }
+
+/* ========================================================
+   VIDEO ENHANCEMENTS & TRANSLUCENT GLASS BUBBLES (UI/UX)
+   ======================================================== */
+
+/* Video Hero Section */
+.hero.video-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  background: var(--midnight-dark);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+  margin-bottom: 3.5rem;
+  isolation: isolate;
+}
+
+.hero-video-bg-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-video-el {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.72) saturate(1.2);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(17, 24, 31, 0.52) 0%, rgba(11, 16, 21, 0.82) 100%);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 2;
+}
+
+/* Translucent Frosted Glass Bubble */
+.hero-glass-bubble {
+  position: relative;
+  z-index: 3;
+  padding: 4.5rem 2.5rem 3.5rem;
+  text-align: center;
+  background: rgba(23, 31, 38, 0.62);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 18px;
+  box-shadow: inset 0 1px 0 rgba(213, 168, 83, 0.25), inset 0 0 30px rgba(90, 156, 164, 0.08);
+}
+
+/* Interactive Scene Switcher */
+.hero-scene-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 2.2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(213, 168, 83, 0.2);
+}
+
+.switcher-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--gold-light);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-right: 0.25rem;
+}
+
+.switcher-pills {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.scene-pill {
+  background: rgba(17, 24, 31, 0.75);
+  border: 1px solid rgba(213, 168, 83, 0.35);
+  color: var(--text-light);
+  font-family: var(--font-brand);
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.scene-pill:hover {
+  background: rgba(213, 168, 83, 0.2);
+  border-color: var(--gold-primary);
+  color: var(--gold-light);
+  transform: translateY(-1px);
+}
+
+.scene-pill.active {
+  background: linear-gradient(135deg, rgba(213, 168, 83, 0.35), rgba(90, 156, 164, 0.35));
+  border-color: var(--gold-primary);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(213, 168, 83, 0.3);
+}
+
+.video-play-pause-toggle {
+  background: rgba(17, 24, 31, 0.85);
+  border: 1px solid var(--card-border);
+  color: var(--gold-primary);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.25s ease;
+  margin-left: 0.4rem;
+}
+
+.video-play-pause-toggle:hover {
+  border-color: var(--gold-primary);
+  background: rgba(213, 168, 83, 0.25);
+  transform: scale(1.08);
+}
+
+/* Translucent Video Ribbon (Heritage) */
+.heritage-ribbon.video-ribbon {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  background: var(--midnight-dark);
+  border: 1px solid var(--gold-primary);
+  border-radius: 16px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+  margin-bottom: 3.5rem;
+  isolation: isolate;
+}
+
+.ribbon-video-bg-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ribbon-video-el {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.48) saturate(1.2);
+}
+
+.ribbon-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(23, 31, 38, 0.85) 0%, rgba(17, 24, 31, 0.92) 100%);
+  z-index: 2;
+}
+
+.ribbon-glass-content {
+  position: relative;
+  z-index: 3;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: rgba(17, 24, 31, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 14px;
+}
+
+/* Translucent Video Cards (Pillars) */
+.card.video-card {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  background: var(--midnight-dark);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-video-bg-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.card-video-el {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.58) saturate(1.2);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+
+.card-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(17, 24, 31, 0.65) 0%, rgba(11, 16, 21, 0.88) 100%);
+  z-index: 2;
+}
+
+.card-glass-content {
+  position: relative;
+  z-index: 3;
+  padding: 2.2rem;
+  background: rgba(26, 36, 45, 0.68);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+.card.video-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold-primary);
+  box-shadow: 0 16px 36px rgba(90, 156, 164, 0.25), 0 0 24px rgba(213, 168, 83, 0.22);
+}
+
+.card.video-card:hover .card-video-el {
+  transform: scale(1.08);
+  filter: brightness(0.78) saturate(1.3);
+}
+
+.card.video-card:hover .card-glass-content {
+  background: rgba(26, 36, 45, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Interlaced Video Vignette Reel (Live Moments) */
+.moments-reel-section {
+  margin-bottom: 3.5rem;
+}
+
+.moments-reel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.moment-vignette {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 210px;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: block;
+}
+
+.moment-vignette:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold-primary);
+  box-shadow: 0 12px 30px rgba(213, 168, 83, 0.3);
+}
+
+.moment-video-el {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75);
+  transition: transform 0.6s ease, filter 0.3s ease;
+}
+
+.moment-vignette:hover .moment-video-el {
+  transform: scale(1.06);
+  filter: brightness(0.9);
+}
+
+.moment-caption-bubble {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.9rem 1rem;
+  background: linear-gradient(to top, rgba(11, 16, 21, 0.95) 0%, rgba(17, 24, 31, 0.72) 70%, transparent 100%);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.moment-caption-title {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.moment-caption-tag {
+  font-size: 0.72rem;
+  color: var(--gold-light);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Reduced Motion for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hero-video-el,
+  .card-video-el,
+  .ribbon-video-el,
+  .moment-video-el {
+    display: none;
+  }
+  .hero-video-bg-wrap {
+    background: url('../images/hero-celebration-poster.jpg') center/cover no-repeat;
+  }
+  .ribbon-video-bg-wrap {
+    background: url('../images/pillar-nightlife-poster.jpg') center/cover no-repeat;
+  }
+  .card-video-bg-wrap {
+    background: url('../images/pillar-weddings-poster.jpg') center/cover no-repeat;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-glass-bubble {
+    padding: 3rem 1.25rem 2.5rem;
+  }
+  .hero-scene-switcher {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .scene-pill {
+    font-size: 0.72rem;
+    padding: 0.35rem 0.75rem;
+  }
+}

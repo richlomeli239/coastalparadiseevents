@@ -342,3 +342,41 @@ async function sendFormData(payload) {
     body: JSON.stringify(payload)
   });
 }
+
+// ========================================================
+// BACKGROUND SLOW MOTION VIDEO INITIALIZER
+// (Tebo Creek Lodge Video Design & Formatting)
+// ========================================================
+function initBackgroundVideo() {
+  if (typeof document === 'undefined') return;
+  const video = document.getElementById('bg-video-primary');
+  if (!video) return;
+
+  // Set slow-motion playback rate for smooth cinematic atmosphere
+  video.playbackRate = 0.65;
+
+  // Cross-browser autoplay insurance
+  if (typeof video.play === 'function') {
+    video.play().catch(function() {
+      video.muted = true;
+      if (typeof video.play === 'function') {
+        video.play().catch(function() {});
+      }
+    });
+  }
+
+  // Respect prefers-reduced-motion
+  if (typeof window !== 'undefined' && window.matchMedia) {
+    try {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (typeof video.pause === 'function') {
+          video.pause();
+        }
+      }
+    } catch (e) {}
+  }
+}
+
+if (typeof document !== 'undefined' && document.addEventListener) {
+  document.addEventListener('DOMContentLoaded', initBackgroundVideo);
+}

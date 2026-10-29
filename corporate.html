@@ -42,6 +42,27 @@
 </head>
 <body>
 
+  <!-- Translucent Slow Motion Video Montage Background (Encompassing the Entire Page) -->
+  <div class="video-bg-container" aria-hidden="true">
+    <video
+      id="bg-video-primary"
+      class="video-bg"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      poster="assets/videos/corporate-dj-holiday-party-poster.jpg"
+    >
+      <source src="assets/videos/corporate-dj-holiday-party.mp4" type="video/mp4">
+      <source src="assets/videos/corporate-celebration-toast.mp4" type="video/mp4">
+      <source src="assets/videos/corporate-party-dancing.mp4" type="video/mp4">
+      <source src="assets/videos/corporate-gala-banquet.mp4" type="video/mp4">
+      Your browser does not support HTML5 video background.
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+
   <header>
     <a href="index.html" class="brand-container" aria-label="Coastal Paradise Events Home">
       <img src="assets/images/logo.jpg" alt="Coastal Paradise Events" class="brand-logo-img" />
@@ -198,5 +219,43 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
+
+  <!-- Video Playback & Interaction Script -->
+  <script>
+    (function() {
+      const video = document.getElementById('bg-video-primary');
+      if (video) {
+        // Set slow-motion playback rate for smooth cinematic atmosphere
+        video.playbackRate = 0.65;
+
+        // Cross-browser autoplay insurance
+        video.play().catch(function() {
+          video.muted = true;
+          video.play().catch(function() {});
+        });
+
+        // Respect prefers-reduced-motion
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          video.pause();
+        }
+
+        // Slow-motion playlist sequence between corporate holiday party and DJ entertainment clips
+        const playlist = [
+          'assets/videos/corporate-dj-holiday-party.mp4',
+          'assets/videos/corporate-celebration-toast.mp4',
+          'assets/videos/corporate-party-dancing.mp4',
+          'assets/videos/corporate-gala-banquet.mp4'
+        ];
+        let currentTrack = 0;
+
+        video.addEventListener('ended', function() {
+          currentTrack = (currentTrack + 1) % playlist.length;
+          video.src = playlist[currentTrack];
+          video.playbackRate = 0.65;
+          video.play().catch(function() {});
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

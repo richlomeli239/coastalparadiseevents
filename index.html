@@ -83,10 +83,12 @@
     <video
       id="bg-video-primary"
       class="video-bg"
+      src="assets/videos/home-wedding-dj-dancefloor.mp4"
       autoplay
       muted
       loop
       playsinline
+      webkit-playsinline
       preload="auto"
       poster="assets/videos/home-wedding-dj-dancefloor-poster.jpg"
     >
@@ -97,6 +99,24 @@
     </video>
     <div class="video-overlay"></div>
   </div>
+  <!-- Immediate inline video startup insurance right at page landing -->
+  <script>
+    (function() {
+      var v = document.getElementById('bg-video-primary');
+      if (v) {
+        v.defaultMuted = true;
+        v.muted = true;
+        try { v.playbackRate = 0.65; } catch (e) {}
+        var p = v.play();
+        if (p !== undefined) {
+          p.catch(function() {
+            v.muted = true;
+            v.play().catch(function() {});
+          });
+        }
+      }
+    })();
+  </script>
 
   <header>
     <a href="index.html" class="brand-container" aria-label="Coastal Paradise Events Home">
@@ -283,36 +303,45 @@
   <!-- Video Playback & Interaction Script -->
   <script>
     (function() {
-      const video = document.getElementById('bg-video-primary');
+      var video = document.getElementById('bg-video-primary');
       if (video) {
-        // Set slow-motion playback rate for smooth cinematic atmosphere
-        video.playbackRate = 0.65;
+        video.defaultMuted = true;
+        video.muted = true;
+        var setRate = function() {
+          try { video.playbackRate = 0.65; } catch (e) {}
+        };
+        setRate();
+        video.addEventListener('loadedmetadata', setRate);
+        video.addEventListener('play', setRate);
 
-        // Cross-browser autoplay insurance
         video.play().catch(function() {
           video.muted = true;
           video.play().catch(function() {});
         });
 
-        // Respect prefers-reduced-motion
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
           video.pause();
         }
 
-        // Slow-motion playlist sequence between wedding dancefloor clips
-        const playlist = [
+        // Slow-motion playlist sequence: wedding reception with packed dancefloor
+        var playlist = [
           'assets/videos/home-wedding-dj-dancefloor.mp4',
           'assets/videos/home-dj-crowd-lights.mp4',
           'assets/videos/home-couple-dancefloor.mp4'
         ];
-        let currentTrack = 0;
+        var currentTrack = 0;
 
-        video.addEventListener('ended', function() {
-          currentTrack = (currentTrack + 1) % playlist.length;
-          video.src = playlist[currentTrack];
-          video.playbackRate = 0.65;
-          video.play().catch(function() {});
-        });
+        if (playlist.length > 1) {
+          video.removeAttribute('loop');
+          video.addEventListener('ended', function() {
+            currentTrack = (currentTrack + 1) % playlist.length;
+            video.src = playlist[currentTrack];
+            video.defaultMuted = true;
+            video.muted = true;
+            setRate();
+            video.play().catch(function() {});
+          });
+        }
       }
     })();
   </script>

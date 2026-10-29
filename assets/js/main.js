@@ -346,24 +346,59 @@ async function sendFormData(payload) {
 // ========================================================
 // BACKGROUND SLOW MOTION VIDEO INITIALIZER
 // (Tebo Creek Lodge Video Design & Formatting)
+// Instant-start at landing, muted looping, slow motion
 // ========================================================
 function initBackgroundVideo() {
   if (typeof document === 'undefined') return;
   const video = document.getElementById('bg-video-primary');
   if (!video) return;
 
-  // Set slow-motion playback rate for smooth cinematic atmosphere
-  video.playbackRate = 0.65;
+  // Crucial for iOS WebKit & Chrome autoplay without delay
+  video.defaultMuted = true;
+  video.muted = true;
 
-  // Cross-browser autoplay insurance
-  if (typeof video.play === 'function') {
-    video.play().catch(function() {
-      video.muted = true;
-      if (typeof video.play === 'function') {
-        video.play().catch(function() {});
+  // Set slow-motion playback rate (0.65x)
+  var applyRate = function() {
+    try {
+      video.playbackRate = 0.65;
+    } catch (e) {}
+  };
+  applyRate();
+
+  video.addEventListener('loadedmetadata', applyRate);
+  video.addEventListener('canplay', applyRate);
+  video.addEventListener('play', applyRate);
+  video.addEventListener('playing', applyRate);
+
+  // Cross-browser instant autoplay execution
+  var attemptPlay = function() {
+    video.defaultMuted = true;
+    video.muted = true;
+    applyRate();
+    if (typeof video.play === 'function') {
+      var promise = video.play();
+      if (promise !== undefined) {
+        promise.catch(function() {
+          video.muted = true;
+          video.play().catch(function() {});
+        });
       }
+    }
+  };
+
+  attemptPlay();
+
+  // One-time interaction fallback in case aggressive mobile battery-saver suspended initial frame
+  var interactionEvents = ['touchstart', 'touchend', 'click', 'scroll', 'pointerdown'];
+  var onFirstInteraction = function() {
+    attemptPlay();
+    interactionEvents.forEach(function(evt) {
+      window.removeEventListener(evt, onFirstInteraction);
     });
-  }
+  };
+  interactionEvents.forEach(function(evt) {
+    window.addEventListener(evt, onFirstInteraction, { once: true, passive: true });
+  });
 
   // Respect prefers-reduced-motion
   if (typeof window !== 'undefined' && window.matchMedia) {
@@ -377,6 +412,12 @@ function initBackgroundVideo() {
   }
 }
 
-if (typeof document !== 'undefined' && document.addEventListener) {
-  document.addEventListener('DOMContentLoaded', initBackgroundVideo);
+// Immediate execution & lifecycle hooks
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    initBackgroundVideo();
+  } else {
+    document.addEventListener('DOMContentLoaded', initBackgroundVideo);
+  }
+  window.addEventListener('load', initBackgroundVideo);
 }

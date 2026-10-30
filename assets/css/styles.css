@@ -386,6 +386,19 @@ nav {
   margin-bottom: 3.5rem;
 }
 
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (min-width: 1100px) {
+  .grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 .card {
   background: rgba(20, 28, 36, 0.48);
   backdrop-filter: blur(12px);

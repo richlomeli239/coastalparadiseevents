@@ -431,6 +431,17 @@ function initVideoRoll(playlist, intervalSec) {
   var video = document.getElementById('bg-video-primary');
   if (!video || !playlist || !playlist.length) return;
 
+  // Sanitize playlist items (remove any stray quotes, commas, or whitespace)
+  var cleanPlaylist = [];
+  for (var i = 0; i < playlist.length; i++) {
+    if (typeof playlist[i] === 'string') {
+      var item = playlist[i].replace(/['",]+/g, '').trim();
+      if (item.length > 0) cleanPlaylist.push(item);
+    }
+  }
+  if (!cleanPlaylist.length) return;
+  playlist = cleanPlaylist;
+
   var seconds = (typeof intervalSec === 'number' && intervalSec > 0) ? intervalSec : 6;
   var intervalMs = seconds * 1000;
   var currentTrack = 0;
@@ -445,6 +456,14 @@ function initVideoRoll(playlist, intervalSec) {
   video.muted = true;
   video.removeAttribute('loop');
   setRate();
+
+  // If initial video src has any typos/quotes or does not match playlist[0], fix it immediately
+  var rawSrc = video.getAttribute('src') || video.currentSrc || video.src || '';
+  var cleanSrc = rawSrc.replace(/['",]+/g, '').trim();
+  if (cleanSrc !== rawSrc || !cleanSrc || cleanSrc.indexOf(playlist[0]) === -1) {
+    video.src = playlist[0];
+    video.setAttribute('src', playlist[0]);
+  }
 
   function switchTrack() {
     if (isSwitching || playlist.length <= 1) return;
@@ -489,6 +508,14 @@ function initVideoRoll(playlist, intervalSec) {
       }, intervalMs);
     }
   }
+
+  // Automatic error recovery: skip broken track immediately without waiting
+  video.addEventListener('error', function() {
+    if (!isSwitching && playlist.length > 1) {
+      if (timer) clearTimeout(timer);
+      switchTrack();
+    }
+  });
 
   video.addEventListener('ended', function() {
     switchTrack();

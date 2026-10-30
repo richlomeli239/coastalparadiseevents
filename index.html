@@ -94,8 +94,9 @@
       poster="assets/videos/home-wedding-dj-dancefloor-poster.jpg"
     >
       <source src="assets/videos/home-wedding-dj-dancefloor.mp4" type="video/mp4">
-      <source src="assets/videos/home-dj-crowd-lights.mp4" type="video/mp4">
-      <source src="assets/videos/home-couple-dancefloor.mp4" type="video/mp4">
+      <source src="assets/videos/resorts-poolside-sunbathing.mp4" type="video/mp4">
+      <source src="assets/videos/corporate-celebration-toast.mp4" type="video/mp4">
+      <source src="assets/videos/about-bride-beach-sunset.mp4" type="video/mp4">
       Your browser does not support HTML5 video background.
     </video>
     <div class="video-overlay"></div>
@@ -197,6 +198,10 @@
 
     <div class="grid-3">
       <div class="card">
+        <div class="card-video-preview">
+          <video class="card-embedded-video" src="assets/videos/weddings-bride-flowers-walking.mp4" poster="assets/videos/weddings-bride-bouquet-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata"></video>
+          <div class="video-badge-tag"><i class="fa-solid fa-play"></i> Seaside Wedding Elegance</div>
+        </div>
         <i class="fa-solid fa-wedding card-icon"></i>
         <h3>Weddings & Coordination</h3>
         <p>White-glove reception pacing, dignified introduction and complete synchronization with your photographer and videographer.</p>
@@ -208,6 +213,10 @@
       </div>
 
       <div class="card">
+        <div class="card-video-preview">
+          <video class="card-embedded-video" src="assets/videos/resorts-poolside-sunbathing.mp4" poster="assets/videos/resorts-poolside-dj-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata"></video>
+          <div class="video-badge-tag"><i class="fa-solid fa-play"></i> Corporate &amp; Luxury Resort Vibes</div>
+        </div>
         <i class="fa-solid fa-building card-icon"></i>
         <h3>Corporate & Resort Events</h3>
         <p>Crystal-clear executive audio, awards banquet stagers and sophisticated sunset soundscapes for luxury waterfront resorts.</p>
@@ -219,6 +228,10 @@
       </div>
 
       <div class="card">
+        <div class="card-video-preview">
+          <video class="card-embedded-video" src="assets/videos/karaoke-singing-party-women.mp4" poster="assets/videos/karaoke-women-singing-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata"></video>
+          <div class="video-badge-tag"><i class="fa-solid fa-play"></i> High-Energy Karaoke &amp; Nightlife</div>
+        </div>
         <i class="fa-solid fa-microphone-lines card-icon"></i>
         <h3>Nightlife, Karaoke & More</h3>
         <p>Turn slow weeknights into packed houses with real vinyl/CDJ mixing, live console karaoke, Singo (Music Bingo) and/or pub trivia.</p>
@@ -323,8 +336,11 @@
     (function() {
       var playlist = [
         'assets/videos/home-wedding-dj-dancefloor.mp4',
-        'assets/videos/home-dj-crowd-lights.mp4',
-        'assets/videos/home-couple-dancefloor.mp4'
+        'assets/videos/resorts-poolside-sunbathing.mp4',
+        'assets/videos/corporate-celebration-toast.mp4',
+        'assets/videos/about-bride-beach-sunset.mp4',
+        'assets/videos/karaoke-singing-party-women.mp4',
+        'assets/videos/home-dj-crowd-lights.mp4'
       ];
       if (typeof initVideoRoll === 'function') {
         initVideoRoll(playlist, 6);

@@ -83,7 +83,7 @@
     <video
       id="bg-video-primary"
       class="video-bg"
-      src="assets/videos/resorts-poolside-dj-decks.mp4"
+      src="assets/videos/resorts-poolside-sunbathing.mp4"
       autoplay
       muted
       loop
@@ -92,10 +92,10 @@
       preload="auto"
       poster="assets/videos/resorts-poolside-dj-poster.jpg"
     >
-      <source src="assets/videos/resorts-poolside-dj-decks.mp4" type="video/mp4">
-      <source src="assets/videos/resorts-poolside-dj-margaritaville.mp4" type="video/mp4">
       <source src="assets/videos/resorts-poolside-sunbathing.mp4" type="video/mp4">
       <source src="assets/videos/resorts-tropical-cocktails.mp4" type="video/mp4">
+      <source src="assets/videos/resorts-poolside-dj-margaritaville.mp4" type="video/mp4">
+      <source src="assets/videos/about-beach-aerial-sunset.mp4" type="video/mp4">
       Your browser does not support HTML5 video background.
     </video>
     <div class="video-overlay"></div>
@@ -172,6 +172,10 @@
 
     <div class="grid-3">
       <div class="card">
+        <div class="card-video-preview">
+          <video class="card-embedded-video" src="assets/videos/resorts-tropical-cocktails.mp4" poster="assets/videos/resorts-poolside-dj-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata"></video>
+          <div class="video-badge-tag"><i class="fa-solid fa-play"></i> Sunset Cocktails &amp; Lounge</div>
+        </div>
         <i class="fa-solid fa-sun card-icon"></i>
         <h3>Sunset Lounge Sessions</h3>
         <p>Sophisticated organic house, nu-disco, yacht rock, and coastal chill curated specifically to complement Gulf Coast sunset dining and cocktails.</p>
@@ -183,6 +187,10 @@
       </div>
 
       <div class="card">
+        <div class="card-video-preview">
+          <video class="card-embedded-video" src="assets/videos/resorts-poolside-sunbathing.mp4" poster="assets/videos/resorts-poolside-dj-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata"></video>
+          <div class="video-badge-tag"><i class="fa-solid fa-play"></i> Poolside Sun &amp; Cabana Vibes</div>
+        </div>
         <i class="fa-solid fa-water-ladder card-icon"></i>
         <h3>Resort Pool Deck Programming</h3>
         <p>Upbeat, family-friendly or VIP adult pool deck sets that energize cabanas and poolside bars without overwhelming resort guests.</p>
@@ -194,6 +202,10 @@
       </div>
 
       <div class="card">
+        <div class="card-video-preview">
+          <video class="card-embedded-video" src="assets/videos/resorts-poolside-dj-margaritaville.mp4" poster="assets/videos/resorts-poolside-dj-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata"></video>
+          <div class="video-badge-tag"><i class="fa-solid fa-play"></i> Live Resort DJ Production</div>
+        </div>
         <i class="fa-solid fa-record-vinyl card-icon"></i>
         <h3>Authentic Vinyl & CDJ Staging</h3>
         <p>Elevate your lounge aesthetic with dual Technics 1200 turntables, Pioneer CDJ-1000 M3 decks, or sleek Pioneer digital controllers.</p>
@@ -308,10 +320,12 @@
   <script>
     (function() {
       var playlist = [
+        'assets/videos/resorts-poolside-sunbathing.mp4',
+        'assets/videos/resorts-tropical-cocktails.mp4',
+        'assets/videos/resorts-poolside-dj-margaritaville.mp4',
+        'assets/videos/about-beach-aerial-sunset.mp4',
         'assets/videos/resorts-poolside-dj-decks.mp4',
-          'assets/videos/resorts-poolside-dj-margaritaville.mp4',
-          'assets/videos/resorts-poolside-sunbathing.mp4',
-          'assets/videos/resorts-tropical-cocktails.mp4'
+        'assets/videos/resorts-dj-decks-mixing.mp4'
       ];
       if (typeof initVideoRoll === 'function') {
         initVideoRoll(playlist, 6);

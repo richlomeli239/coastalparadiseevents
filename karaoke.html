@@ -93,7 +93,9 @@
       poster="assets/videos/karaoke-women-singing-poster.jpg"
     >
       <source src="assets/videos/karaoke-women-singing-party.mp4" type="video/mp4">
+      <source src="assets/videos/karaoke-singing-party-women.mp4" type="video/mp4">
       <source src="assets/videos/karaoke-girl-microphone-singing.mp4" type="video/mp4">
+      <source src="assets/videos/karaoke-mic-singalong.mp4" type="video/mp4">
       Your browser does not support HTML5 video background.
     </video>
     <div class="video-overlay"></div>
@@ -170,6 +172,10 @@
 
     <div class="grid-3">
       <div class="card">
+        <div class="card-video-preview">
+          <video class="card-embedded-video" src="assets/videos/karaoke-women-singing-party.mp4" poster="assets/videos/karaoke-women-singing-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata"></video>
+          <div class="video-badge-tag"><i class="fa-solid fa-play"></i> Women Singing &amp; Party Energy</div>
+        </div>
         <i class="fa-solid fa-microphone card-icon"></i>
         <h3>Live Console Karaoke Production</h3>
         <p>No tablet toys. We engineer every singer live on a dedicated vocal mixing board, blending vocals seamlessly with studio backing tracks.</p>
@@ -181,6 +187,10 @@
       </div>
 
       <div class="card">
+        <div class="card-video-preview">
+          <video class="card-embedded-video" src="assets/videos/karaoke-singing-party-women.mp4" poster="assets/videos/karaoke-women-singing-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata"></video>
+          <div class="video-badge-tag"><i class="fa-solid fa-play"></i> Sing-Along Crowd Excitement</div>
+        </div>
         <i class="fa-solid fa-music card-icon"></i>
         <h3>Singo (Interactive Song Bingo)</h3>
         <p>Guests listen to 30-second hooks of iconic hits across decades and genres, marking song titles on their cards to win prizes.</p>
@@ -192,6 +202,10 @@
       </div>
 
       <div class="card">
+        <div class="card-video-preview">
+          <video class="card-embedded-video" src="assets/videos/karaoke-mic-singalong.mp4" poster="assets/videos/karaoke-women-singing-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata"></video>
+          <div class="video-badge-tag"><i class="fa-solid fa-play"></i> Interactive Host &amp; Mic Sing-Alongs</div>
+        </div>
         <i class="fa-solid fa-lightbulb card-icon"></i>
         <h3>Hosted Pub Trivia & Production Add-Ons</h3>
         <p>Turnkey trivia competition paired with concert-grade sound, atmospheric smoke/haze machines, and professional lighting.</p>
@@ -296,7 +310,10 @@
     (function() {
       var playlist = [
         'assets/videos/karaoke-women-singing-party.mp4',
-          'assets/videos/karaoke-girl-microphone-singing.mp4'
+        'assets/videos/karaoke-singing-party-women.mp4',
+        'assets/videos/karaoke-girl-microphone-singing.mp4',
+        'assets/videos/karaoke-mic-singalong.mp4',
+        'assets/videos/bars-club-women-jumping.mp4'
       ];
       if (typeof initVideoRoll === 'function') {
         initVideoRoll(playlist, 6);

@@ -525,3 +525,58 @@ function initVideoRoll(playlist, intervalSec) {
   }
   scheduleNext();
 }
+
+// ========================================================
+// EMBEDDED CARD VIDEOS LAZY-PLAY OBSERVER
+// IntersectionObserver auto-plays embedded preview videos
+// only when scrolled into viewport, preserving mobile battery & CPU
+// ========================================================
+function initCardVideoLazyPlay() {
+  if (typeof document === 'undefined') return;
+  var cardVideos = document.querySelectorAll('.card-embedded-video');
+  if (!cardVideos.length) return;
+
+  if ('IntersectionObserver' in window) {
+    var videoObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        var vid = entry.target;
+        if (entry.isIntersecting) {
+          vid.defaultMuted = true;
+          vid.muted = true;
+          var p = vid.play();
+          if (p !== undefined) {
+            p.catch(function() {
+              vid.muted = true;
+              vid.play().catch(function() {});
+            });
+          }
+        } else {
+          if (typeof vid.pause === 'function') {
+            vid.pause();
+          }
+        }
+      });
+    }, { threshold: 0.15 });
+
+    cardVideos.forEach(function(vid) {
+      videoObserver.observe(vid);
+    });
+  } else {
+    // Fallback for older browsers
+    cardVideos.forEach(function(vid) {
+      vid.defaultMuted = true;
+      vid.muted = true;
+      var p = vid.play();
+      if (p !== undefined) p.catch(function() {});
+    });
+  }
+}
+
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    initCardVideoLazyPlay();
+  } else {
+    document.addEventListener('DOMContentLoaded', initCardVideoLazyPlay);
+  }
+  window.addEventListener('load', initCardVideoLazyPlay);
+}

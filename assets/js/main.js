@@ -421,3 +421,107 @@ if (typeof document !== 'undefined') {
   }
   window.addEventListener('load', initBackgroundVideo);
 }
+
+// ========================================================
+// VIDEO ROLL ROTATION ENGINE
+// Rotates each page's video montage precisely every 6 seconds
+// ========================================================
+function initVideoRoll(playlist, intervalSec) {
+  if (typeof document === 'undefined') return;
+  var video = document.getElementById('bg-video-primary');
+  if (!video || !playlist || !playlist.length) return;
+
+  var seconds = (typeof intervalSec === 'number' && intervalSec > 0) ? intervalSec : 6;
+  var intervalMs = seconds * 1000;
+  var currentTrack = 0;
+  var timer = null;
+  var isSwitching = false;
+
+  var setRate = function() {
+    try { video.playbackRate = 0.65; } catch (e) {}
+  };
+
+  video.defaultMuted = true;
+  video.muted = true;
+  video.removeAttribute('loop');
+  setRate();
+
+  function switchTrack() {
+    if (isSwitching || playlist.length <= 1) return;
+    isSwitching = true;
+    if (timer) clearTimeout(timer);
+
+    video.classList.add('crossfade-out');
+
+    setTimeout(function() {
+      currentTrack = (currentTrack + 1) % playlist.length;
+      video.src = playlist[currentTrack];
+      video.defaultMuted = true;
+      video.muted = true;
+      setRate();
+
+      var playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.then(function() {
+          video.classList.remove('crossfade-out');
+          isSwitching = false;
+          scheduleNext();
+        }).catch(function() {
+          video.muted = true;
+          video.play().catch(function() {});
+          video.classList.remove('crossfade-out');
+          isSwitching = false;
+          scheduleNext();
+        });
+      } else {
+        video.classList.remove('crossfade-out');
+        isSwitching = false;
+        scheduleNext();
+      }
+    }, 400);
+  }
+
+  function scheduleNext() {
+    if (timer) clearTimeout(timer);
+    if (playlist.length > 1) {
+      timer = setTimeout(function() {
+        switchTrack();
+      }, intervalMs);
+    }
+  }
+
+  video.addEventListener('ended', function() {
+    switchTrack();
+  });
+
+  video.addEventListener('playing', function() {
+    scheduleNext();
+  });
+
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      if (timer) clearTimeout(timer);
+    } else {
+      scheduleNext();
+    }
+  });
+
+  if (typeof window !== 'undefined' && window.matchMedia) {
+    try {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (timer) clearTimeout(timer);
+        if (typeof video.pause === 'function') video.pause();
+        return;
+      }
+    } catch (e) {}
+  }
+
+  var startPromise = video.play();
+  if (startPromise !== undefined) {
+    startPromise.catch(function() {
+      video.muted = true;
+      video.play().catch(function() {});
+    });
+  }
+  scheduleNext();
+}

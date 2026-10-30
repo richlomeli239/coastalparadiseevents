@@ -39,6 +39,42 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EntertainmentBusiness",
+    "name": "Coastal Paradise Events",
+    "image": "https://coastalparadiseevents.com/assets/images/logo.jpg",
+    "url": "https://coastalparadiseevents.com/privacy.html",
+    "telephone": "+1-941-500-2566",
+    "email": "info@coastalparadiseevents.com",
+    "priceRange": "4619$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Fort Myers",
+      "addressRegion": "FL",
+      "postalCode": "33919",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 26.5689,
+      "longitude": -81.8986
+    },
+    "areaServed": [
+      "Fort Myers",
+      "Cape Coral",
+      "Naples",
+      "Sanibel Island",
+      "Captiva Island",
+      "Bonita Springs",
+      "Estero",
+      "Marco Island"
+    ],
+    "description": "Premier wedding DJ, Master of Ceremonies, corporate event audio, and resort entertainment across Southwest Florida."
+  }
+  </script>
 </head>
 <body>
 
@@ -85,6 +121,23 @@
     <a href="index.html" class="brand-container" aria-label="Coastal Paradise Events Home">
       <img src="assets/images/logo.jpg" alt="Coastal Paradise Events" class="brand-logo-img" />
     </a>
+    
+    <!-- Header Direct Contact Actions (Click to Call & Click to Email) -->
+    <div class="header-contact-actions">
+      <a href="tel:+19415002566" class="header-phone-display" aria-label="Call (941) 500-2566">
+        <i class="fa-solid fa-phone"></i>
+        <span class="header-phone-text">(941) 500-2566</span>
+      </a>
+      <a href="tel:+19415002566" class="header-action-btn header-btn-call" aria-label="Call (941) 500-2566">
+        <i class="fa-solid fa-phone"></i>
+        <span>Call</span>
+      </a>
+      <a href="mailto:info@coastalparadiseevents.com" class="header-action-btn header-btn-email" aria-label="Email info@coastalparadiseevents.com">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Email</span>
+      </a>
+    </div>
+
     <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu" aria-expanded="false">
       <span class="hamburger-bar"></span>
       <span class="hamburger-bar"></span>
@@ -100,6 +153,24 @@
       <a href="karaoke.html" class="nav-link">Karaoke & More</a>
       <a href="quote.html" class="nav-link">Custom Quote</a>
       <button type="button" class="nav-link nav-btn" onclick="openPaymentModal()"><i class="fa-solid fa-lock"></i> Pay Retainer</button>
+
+      <!-- Mobile Navigation Contact Drawer -->
+      <div class="mobile-nav-contact">
+        <div class="mobile-nav-phone-wrap">
+          <span class="mobile-nav-phone-label">Direct Booking Line</span>
+          <a href="tel:+19415002566" class="mobile-nav-phone-link">
+            <i class="fa-solid fa-phone"></i> (941) 500-2566
+          </a>
+        </div>
+        <div class="mobile-nav-contact-btns">
+          <a href="tel:+19415002566" class="header-action-btn header-btn-call">
+            <i class="fa-solid fa-phone"></i> Call Now
+          </a>
+          <a href="mailto:info@coastalparadiseevents.com" class="header-action-btn header-btn-email">
+            <i class="fa-solid fa-envelope"></i> Email Directly
+          </a>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -248,7 +319,8 @@
         <i class="fa-solid fa-phone"></i> (941) 500-2566
       </a>
       <div class="footer-phone-actions">
-        <a href="tel:+19415002566" class="footer-badge-call"><i class="fa-solid fa-phone"></i> Call</a>
+        <a href="tel:+19415002566" class="footer-badge-call" aria-label="Call (941) 500-2566"><i class="fa-solid fa-phone"></i> Call</a>
+        <a href="mailto:info@coastalparadiseevents.com" class="footer-badge-email" aria-label="Email info@coastalparadiseevents.com"><i class="fa-solid fa-envelope"></i> Email</a>
       </div>
       <p class="sms-disclaimer">
         By calling or texting (941) 500-2566, you agree to receive informational calls and text messages (SMS/MMS) from Coastal Paradise Events. Message &amp; data rates may apply. Frequency varies. Reply STOP to cancel or HELP for assistance.
@@ -270,47 +342,15 @@
 
   <script src="assets/js/main.js"></script>
 
-  <!-- Video Playback & Interaction Script -->
+  <!-- Video Playback & Interaction Script: Rotates every 6 seconds -->
   <script>
     (function() {
-      var video = document.getElementById('bg-video-primary');
-      if (video) {
-        video.defaultMuted = true;
-        video.muted = true;
-        var setRate = function() {
-          try { video.playbackRate = 0.65; } catch (e) {}
-        };
-        setRate();
-        video.addEventListener('loadedmetadata', setRate);
-        video.addEventListener('play', setRate);
-
-        video.play().catch(function() {
-          video.muted = true;
-          video.play().catch(function() {});
-        });
-
-        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          video.pause();
-        }
-
-        // Slow-motion playlist sequence: serene coastal beach waves
-        var playlist = [
-          'assets/videos/about-beach-sunset-waves.mp4',
+      var playlist = [
+        'assets/videos/about-beach-sunset-waves.mp4',
           'assets/videos/about-beach-sunset-walk.mp4'
-        ];
-        var currentTrack = 0;
-
-        if (playlist.length > 1) {
-          video.removeAttribute('loop');
-          video.addEventListener('ended', function() {
-            currentTrack = (currentTrack + 1) % playlist.length;
-            video.src = playlist[currentTrack];
-            video.defaultMuted = true;
-            video.muted = true;
-            setRate();
-            video.play().catch(function() {});
-          });
-        }
+      ];
+      if (typeof initVideoRoll === 'function') {
+        initVideoRoll(playlist, 6);
       }
     })();
   </script>

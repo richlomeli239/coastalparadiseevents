@@ -400,12 +400,15 @@ nav {
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   background: rgba(20, 28, 36, 0.48);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(213, 168, 83, 0.4);
   border-radius: 14px;
-  padding: 2.2rem;
+  padding: 1.85rem 1.65rem;
   transition: all 0.25s ease;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
 }
@@ -420,30 +423,34 @@ nav {
 .card-icon {
   font-size: 2.2rem;
   color: var(--teal-glow);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .card h3 {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.75rem;
   color: #FFFFFF;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85);
+  min-height: 2.85em;
+  display: flex;
+  align-items: center;
 }
 
 .card p {
-  font-size: 0.94rem;
+  font-size: 0.93rem;
   color: #F1F5F9;
-  line-height: 1.55;
+  line-height: 1.5;
   margin-bottom: 1.25rem;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
 }
 
 .card ul {
   list-style: none;
+  margin-top: auto;
 }
 
 .card ul li {
